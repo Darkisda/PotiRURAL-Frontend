@@ -1,4 +1,15 @@
 #footer {
+  width: 100%;
   padding: 1rem 1rem;
   background-color: #388E3C;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.footer-col {
+  color: #fff;
+  font-size: 1rem;
+  width: 20%;
 }
