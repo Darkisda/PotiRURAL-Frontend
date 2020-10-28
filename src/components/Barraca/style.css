@@ -1,4 +1,5 @@
 .modal-content {
+  width: 16rem;
   border: 5px solid #C8E6C9;
   border-radius: 10px;
 }
@@ -24,20 +25,14 @@
   justify-content: center;
 }
 
-.barraca-body ul{
-  width: 100%;
-  list-style: none;
-  margin-left: 0;
-  padding-left: 0;
-  text-indent: -1em;
+.barraca-body .products-list{
+  margin-top: 2rem;
+  width: 80%;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
   justify-content: space-between;
-}
-
-.barraca-body ul li {
-  display: flex;
-  margin-left: 1rem;
+  text-align: center;
 }
 
 

@@ -139,13 +139,6 @@
   justify-content: flex-end;
 }
 
-hr {
-  margin-top: 3rem;
-  margin-bottom: 3rem;
-  border: 0;
-  border-top: 0.15rem solid #BDBDBD;
-}
-
 @media (max-width: 576px) {
   #button-landing-on-footer{
     width: 95%;

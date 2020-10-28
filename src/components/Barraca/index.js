@@ -7,13 +7,13 @@ import './style.css';
 export default function Barraca() {
   const number = [
     'Manga',
-    'Manga',
-    'manga',
-    'manga',
-    'manga',
-    'manga',
-    'manga',
-    'manga',
+    'Tomarindo',
+    'Feijão',
+    'Melancia',
+    'Abacate',
+    'Mamão',
+    'Pera',
+    'Maça',
   ];
   return (
     <Modal.Dialog>
@@ -24,11 +24,11 @@ export default function Barraca() {
 
       <Modal.Body className="barraca-body">
         <FaImage size={100} color="#4CAF50" />
-        <ul>
+        <p className="products-list">
           {number.map((num) => (
-            <li>{num},</li>
+            <> {num}, </>
           ))}
-        </ul>
+        </p>
       </Modal.Body>
 
       <Modal.Footer className="barraca-footer">

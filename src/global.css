@@ -4,3 +4,10 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+hr {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  border: 0;
+  border-top: 0.15rem solid #BDBDBD;
+}
