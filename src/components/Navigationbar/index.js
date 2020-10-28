@@ -5,13 +5,13 @@ import './style.css';
 
 export default function NavigationBar() {
   return (
-    <Navbar expand="md" className="justify-content-between">
+    <Navbar expand="md" id="navbar-custom">
       <Navbar.Brand href="#" id="potirural">
         potiRURAL
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="mobile" />
       <Navbar.Collapse id="mobile">
-        <Nav>
+        <Nav id="nav-custom">
           <Nav.Item>
             <Nav.Link href="#">Artigos</Nav.Link>
           </Nav.Item>
@@ -25,7 +25,7 @@ export default function NavigationBar() {
             <Nav.Link href="#">Pergunte ao especialista</Nav.Link>
           </Nav.Item>
         </Nav>
-        <Button className="mr-sm-2">Testar</Button>
+        <Button id="button-nav">Entrar</Button>
       </Navbar.Collapse>
     </Navbar>
   );

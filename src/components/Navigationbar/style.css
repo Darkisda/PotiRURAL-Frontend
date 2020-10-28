@@ -3,3 +3,39 @@
   font-weight: 600;
   color: #43A047;
 }
+
+#navbar-custom {
+  width: 100%;
+}
+
+#nav-custom {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#button-nav {
+  width: 7rem;
+  font-weight: 600;
+  background-color: #03A9F4;
+  border: none;
+  font-size: 1rem;
+  transform: initial background-color 0.8s;
+}
+
+#button-nav:hover {
+  background-color: #0288D1;
+}
+
+@media (max-width: 576px) {
+  #nav-custom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #button-nav {
+    margin-top: 1rem;
+  }
+}
