@@ -80,9 +80,9 @@ export default function Landing() {
               Entre em contato e agende a melhor hora e dia para começarem a
               trabalhar juntos!
             </h5>
-            <a href="/" className="link">
-              E você como produtor pode entrar nessa!
-            </a>
+            <h5 className="subtitle">
+              <a href="/">E você como produtor pode entrar nessa!</a>
+            </h5>
           </Col>
           <Col xs={12} lg={6} id="col-right">
             <img src={ajudando} alt="ajudando" className="vetor1" />

@@ -33,6 +33,16 @@
   margin-top: 2.7rem;
 }
 
+.subtitle a {
+  color: #757575;
+  text-decoration: none;
+  transform: initial color 0.8s;
+}
+
+.subtitle a:hover {
+  color: #5a5a5a;
+}
+
 .medium-title {
   font-size: 2.5rem;
   margin-top: 5rem;
@@ -50,14 +60,6 @@
 .vetor2 {
   margin-top: 3rem;
   width: 55%;
-}
-
-.link {
-  font-size: 1.5rem;
-  text-align: justify;
-  font-weight: 600;
-  text-decoration: none;
-  color: #757575;
 }
 
 .custom {
