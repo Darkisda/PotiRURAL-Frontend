@@ -41,13 +41,13 @@
   text-align: right;
 }
 
-.feira1 {
+.vetor1 {
   align-items: center;
   margin-top: 5rem;
   width: 68%;
 }
 
-.feira2 {
+.vetor2 {
   margin-top: 3rem;
   width: 55%;
 }
@@ -58,7 +58,10 @@
   font-weight: 600;
   text-decoration: none;
   color: #757575;
+}
 
+.custom {
+  text-align: right;
 }
 
 #barracas {
@@ -85,6 +88,7 @@
   background-color: #0288D1;
 }
 
+
 #idealizadores {
   margin-top: 3.3rem;
   margin-bottom: 3.3rem;
@@ -103,6 +107,31 @@
   justify-content: space-between;
 }
 
+#section-on-footer {
+  margin-top: 3.3rem;
+  margin-bottom: 3.3rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+
+#button-landing-on-footer {
+  margin-top: 4.3rem;
+  margin-bottom: 4.3rem;
+  width: 60%;
+  height: 85px;
+  background-color: #03A9F4;
+  border: none;
+  font-size: 1.5rem;
+  transform: initial background-color 0.8s;
+}
+
+#button-landing-on-footer:hover {
+  background-color: #0288D1;
+}
+
 #col-right {
   display: flex;
   flex-direction: column;
@@ -111,23 +140,27 @@
 }
 
 hr {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
   border: 0;
   border-top: 0.15rem solid #BDBDBD;
 }
 
 @media (max-width: 576px) {
+  #button-landing-on-footer{
+    width: 95%;
+  }
+  
   .logos {
     width: 95%;
   }
-  .feira1 {
+  .vetor1 {
     align-items: center;
     margin-top: 5rem;
-    width: 70%;
+    width: 75%;
   }
   
-  .feira2 {
+  .vetor2 {
     display: none;
   }
 }
