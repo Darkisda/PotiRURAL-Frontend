@@ -22,7 +22,7 @@
   background-color: #03A9F4;
   border: none;
   font-size: 1rem;
-  transform: initial background-color 0.8s;
+  transform: background-color 0.8s;
 }
 
 #button-nav:hover {

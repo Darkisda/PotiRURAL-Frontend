@@ -1,8 +1,8 @@
 import React from 'react';
-import Landing from './pages/Landing';
+import SignIn from './pages/SignIn';
 
 function App() {
-  return <Landing />;
+  return <SignIn />;
 }
 
 export default App;
