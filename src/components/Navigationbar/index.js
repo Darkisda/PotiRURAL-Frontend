@@ -1,14 +1,15 @@
 import React from 'react';
 import { Navbar, Nav, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 import './style.css';
 
 export default function NavigationBar() {
   return (
     <Navbar expand="md" id="navbar-custom">
-      <Navbar.Brand href="#" id="potirural">
+      <Link to="/" id="potirural">
         potiRURAL
-      </Navbar.Brand>
+      </Link>
       <Navbar.Toggle aria-controls="mobile" />
       <Navbar.Collapse id="mobile">
         <Nav id="nav-custom">
@@ -25,7 +26,9 @@ export default function NavigationBar() {
             <Nav.Link href="#">Pergunte ao especialista</Nav.Link>
           </Nav.Item>
         </Nav>
-        <Button id="button-nav">Entrar</Button>
+        <Link to="/signin">
+          <Button id="button-nav">Entrar</Button>
+        </Link>
       </Navbar.Collapse>
     </Navbar>
   );

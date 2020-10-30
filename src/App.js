@@ -1,8 +1,8 @@
 import React from 'react';
-import SignUp from './pages/SignUp';
+import Routes from './Routes';
 
 function App() {
-  return <SignUp />;
+  return <Routes />;
 }
 
 export default App;

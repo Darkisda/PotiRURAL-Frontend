@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Container, Row, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 import Navigationbar from '../../components/Navigationbar';
 import Barraca from '../../components/Barraca';
@@ -29,9 +30,11 @@ export default function Landing() {
               Uma plataforma pensada e desenvolvida para aqueles que apoiam a
               agricultura local e familiar.
             </h5>
-            <Button id="button-landing">
-              Crie uma conta de <strong>GRAÇA</strong>
-            </Button>
+            <Link to="/signup">
+              <Button id="button-landing">
+                Crie uma conta de <strong>GRAÇA</strong>
+              </Button>
+            </Link>
           </Col>
           <Col xs={12} lg={6}>
             <img src={agricultor} alt="agricultor" className="img" />
