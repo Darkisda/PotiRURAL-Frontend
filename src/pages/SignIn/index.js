@@ -16,9 +16,12 @@ export default function SignIn() {
           <Form.Control type="password" />
           <Form.Label className="custom-label">Senha:</Form.Label>
         </Form.Group>
-        <Button className="button-signin" type="submit">
-          Entrar
-        </Button>
+        <div className="actions-group">
+          <Button className="button-signin" type="submit">
+            Entrar
+          </Button>
+          <a href="/">Esqueceu a senha?</a>
+        </div>
       </Form>
     </Container>
   );
