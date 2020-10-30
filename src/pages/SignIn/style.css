@@ -1,3 +1,8 @@
+.form-group {
+  position: relative;
+  width: 18rem;
+}
+
 .container-login {
   height: 100vh;
   display: flex;
@@ -17,34 +22,6 @@
   justify-content: space-evenly;
 }
 
-.form-group {
-  position: relative;
-  width: 18rem;
-}
-
-.form-control {
-  position: absolute;
-  background: transparent;
-  border: 0.2rem solid #43A047;
-  border-radius: 8px;
-  width: 100%;
-  height: 2.6rem;
-}
-
-.custom-label {
-  color: #bdbdbd;
-  border: 1px solid #ffffff;
-  border-radius: 8px;
-  background-color: #fff;
-  position: absolute;
-  font-size: 1rem;
-  font-weight: 400;
-  top: 0.3rem;
-  left: 0.5rem;
-  pointer-events: none;
-  display: block;
-  transition: 0.5s;
-}
 
 .button-signin {
   width: 7rem;
@@ -57,17 +34,6 @@
 
 .button-signin:hover {
   background-color: #0288D1;
-}
-
-.form-control:focus {
-  border-color: #43A047;
-  box-shadow: 0 0 0 .2rem #C8E6C9;
-}
-
-.form-control:focus + .custom-label{
-  
-  color: #212121;
-  transform: translateY(-20px);
 }
 
 .actions-group {
