@@ -84,7 +84,7 @@ export default function Landing() {
               trabalhar juntos!
             </h5>
             <h5 className="subtitle">
-              <a href="/">E você como produtor pode entrar nessa!</a>
+              <Link to="/">E você como produtor pode entrar nessa!</Link>
             </h5>
           </Col>
           <Col xs={12} lg={6} id="col-right">
@@ -107,11 +107,11 @@ export default function Landing() {
           </Col>
         </Row>
         <hr />
-        <Row id="section-on-footer">
+        <Link to="/signup" id="section-on-footer">
           <Button id="button-landing-on-footer">
             Crie uma conta de <strong>GRAÇA</strong>
           </Button>
-        </Row>
+        </Link>
       </Container>
       <Footer />
     </>
