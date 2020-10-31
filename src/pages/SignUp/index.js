@@ -11,7 +11,7 @@ export default function SignUp() {
         <h1 className="title">
           Preencha os campos abaixo <br /> para realizar o cadastro.
         </h1>
-        <Link to="/">
+        <Link to="/" className="no-decoration">
           <h1 id="potirural">potiRURAL</h1>
         </Link>
       </div>
