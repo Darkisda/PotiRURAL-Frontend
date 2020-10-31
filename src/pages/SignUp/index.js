@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Col, Container, Form } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 import './style.css';
 
@@ -10,7 +11,9 @@ export default function SignUp() {
         <h1 className="title">
           Preencha os campos abaixo <br /> para realizar o cadastro.
         </h1>
-        <h1 id="potirural">potiRURAL</h1>
+        <Link to="/">
+          <h1 id="potirural">potiRURAL</h1>
+        </Link>
       </div>
       <Form className="form-signup">
         <Form.Row className="custom-row-form">
