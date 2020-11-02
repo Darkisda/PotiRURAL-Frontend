@@ -1,0 +1,14 @@
+.perfil-header {
+  width: 100%;
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+@media (max-width: 576px) {  
+  .perfil-header {
+    height: 8rem;
+  }
+}
