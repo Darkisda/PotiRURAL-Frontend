@@ -16,6 +16,10 @@
   position: absolute;
 }
 
+.recipe-content-description {
+  z-index: 3;
+}
+
 .recipe-link {
   bottom: 0;
   right: 0;
@@ -26,11 +30,13 @@
   width: 100%;
   height: 100%;
   background: linear-gradient(to right, rgba(255,255,255, 1.0), rgba(255,255,255, 0.1));
+  z-index: 2;
 }
 
 .recipe-background {
   width: 100%;
   height: 150%;
+  z-index: 1;
 }
 
 .recipe-link{
@@ -38,6 +44,7 @@
   color: #fff;
   font-size: 1.2rem;
   text-shadow: -1px 1px 2px rgba(0,0,0, 0.5);
+  z-index: 3;
 }
 
 .recipe-link:hover {
@@ -46,6 +53,7 @@
 }
 
 .recipe-name {
+  font-weight: 600;
   font-size: 2.5rem;
   color: #212121;
 }

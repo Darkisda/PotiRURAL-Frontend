@@ -10,11 +10,11 @@ export default function RecipesPage() {
     <Container className="container-recipes">
       <UserHeader />
       <Row>
-        <h1>
+        <h1 className="text-header-recipes">
           Algumas receitas que <br /> possam te interessar.
         </h1>
       </Row>
-      <Row>
+      <Row className="row-right">
         <a href="/">Escreva agora mesmo uma nova receita!</a>
       </Row>
       <div className="recipes-content">

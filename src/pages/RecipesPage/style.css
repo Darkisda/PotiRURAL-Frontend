@@ -1,12 +1,26 @@
 .container-recipes {
   width: 100vw;
   height: 100vh;
-  overflow-y: hidden;
 }
 
-.recipes-content {
+.text-header-recipes {
+  margin-top: 3rem;
+  font-size: 3rem;
+  font-weight: 600;
+  color: #43A047;
+}
+
+.row-right {
+  margin-top: 1rem;
   width: 100%;
-  height: 80vh;
-  overflow: scroll;
-  overflow-x: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.row-right a {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #43A047;
+  text-decoration: none;
 }
