@@ -1,0 +1,35 @@
+.container-recipe {
+  padding: 0;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.recipe-header {
+  margin-top: 3rem;
+  height: 25rem;
+  width: 100%;
+  color: #212121;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.recipe-header .recipe-title {
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+.recipe-header .recipe-description {
+  font-size: 1.5rem;
+}
+
+.img-wrapper {
+  width: 100%;
+  height: 15rem;
+  overflow: hidden;
+}
+
+.recipe-image {
+  transform: translateY(-20%);
+  width: 100%;
+}
