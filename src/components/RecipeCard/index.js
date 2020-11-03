@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './style.css';
 
@@ -12,9 +13,9 @@ export default function RecipeCard() {
         </p>
       </div>
       <div className="gradient-opacity" />
-      <a href="/" className="recipe-link">
+      <Link to={`/recipes/${1}`} className="recipe-link">
         Veja a receira completa!
-      </a>
+      </Link>
       <img
         src="https://i0.statig.com.br/bancodeimagens/cs/1t/wm/cs1twm81owp8iug586w3t6pjl.jpg"
         alt="imagem da receita"

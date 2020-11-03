@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import UserHeader from '../../components/UserHeader';
 import RecipeCard from '../../components/RecipeCard';
 
@@ -15,7 +16,7 @@ export default function RecipesPage() {
         </h1>
       </Row>
       <Row className="row-right">
-        <a href="/">Escreva agora mesmo uma nova receita!</a>
+        <Link to="/recipes/create">Escreva agora mesmo uma nova receita!</Link>
       </Row>
       <div className="recipes-content">
         <Row>

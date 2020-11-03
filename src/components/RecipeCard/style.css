@@ -20,11 +20,6 @@
   z-index: 3;
 }
 
-.recipe-link {
-  bottom: 0;
-  right: 0;
-}
-
 .gradient-opacity {
   position: absolute;
   width: 100%;
@@ -40,6 +35,8 @@
 }
 
 .recipe-link{
+  bottom: 0;
+  right: 0;
   font-weight: 600;
   color: #fff;
   font-size: 1.2rem;

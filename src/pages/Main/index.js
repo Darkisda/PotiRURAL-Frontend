@@ -5,7 +5,7 @@ import UserHeader from '../../components/UserHeader';
 
 import './style.css';
 
-export default function Perfil() {
+export default function Main() {
   return (
     <Container className="container-perfil">
       <UserHeader />
