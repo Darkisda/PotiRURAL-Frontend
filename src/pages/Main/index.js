@@ -7,48 +7,48 @@ import './style.css';
 
 export default function Main() {
   return (
-    <Container className="container-perfil">
+    <Container className="container-main">
       <UserHeader />
-      <Row className="custom-row-perfil">
-        <Col lg={5} xs={12} className="custom-col-perfil">
+      <Row className="custom-row-main">
+        <Col lg={5} xs={12} className="custom-col-main">
           <h3>Receitas</h3>
-          <Link to="/recipes" className="section-perfil">
+          <Link to="/recipes" className="section-main">
             <div />
           </Link>
         </Col>
-        <Col lg={7} xs={12} className="custom-col-perfil right">
+        <Col lg={7} xs={12} className="custom-col-main right">
           <h3>Artigos e Leituras</h3>
-          <div className="section-perfil" />
+          <div className="section-main" />
         </Col>
       </Row>
-      <Row className="custom-row-perfil">
-        <Col lg={5} xs={12} className="custom-col-perfil">
+      <Row className="custom-row-main">
+        <Col lg={5} xs={12} className="custom-col-main">
           <h3>Classificados</h3>
-          <div className="section-perfil" />
+          <div className="section-main" />
         </Col>
-        <Col lg={7} xs={12} className="custom-col-perfil right">
+        <Col lg={7} xs={12} className="custom-col-main right">
           <h3>Feira Virtual</h3>
-          <div className="section-perfil" />
+          <div className="section-main" />
         </Col>
       </Row>
-      <Row className="custom-row-perfil mobile">
-        <Col lg={12} xs={12} className="custom-col-perfil">
+      <Row className="custom-row-main mobile">
+        <Col lg={12} xs={12} className="custom-col-main">
           <h3>A procura de ajuda?</h3>
-          <div className="section-perfil" />
+          <div className="section-main" />
         </Col>
       </Row>
-      <Row className="custom-row-perfil">
-        <Col lg={4} sm={4} xs={12} className="custom-col-perfil  mobile">
+      <Row className="custom-row-main">
+        <Col lg={4} sm={4} xs={12} className="custom-col-main  mobile">
           <h3>Cursos online</h3>
-          <div className="section-perfil" />
+          <div className="section-main" />
         </Col>
-        <Col lg={4} sm={4} xs={12} className="custom-col-perfil  mobile">
+        <Col lg={4} sm={4} xs={12} className="custom-col-main  mobile">
           <h3>Espaço Jundiaí</h3>
-          <div className="section-perfil" />
+          <div className="section-main" />
         </Col>
-        <Col lg={4} sm={4} xs={12} className="custom-col-perfil mobile">
+        <Col lg={4} sm={4} xs={12} className="custom-col-main mobile">
           <h3>Próximos eventos</h3>
-          <div className="section-perfil" />
+          <div className="section-main" />
         </Col>
       </Row>
     </Container>
