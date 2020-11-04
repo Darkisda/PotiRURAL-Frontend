@@ -25,7 +25,7 @@ export default function SignIn() {
           <Form.Control type="password" />
         </Form.Group>
         <div className="actions-group">
-          <Link to="/perfil">
+          <Link to="/main">
             <Button className="button-signin" type="submit">
               Entrar
             </Button>
