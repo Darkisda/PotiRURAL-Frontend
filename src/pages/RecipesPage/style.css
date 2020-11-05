@@ -1,5 +1,4 @@
 .container-recipes {
-  padding: 0;
   width: 100vw;
   height: 100vh;
 }
@@ -24,4 +23,12 @@
   font-weight: 600;
   color: #43A047;
   text-decoration: none;
+}
+
+@media (max-width: 576px) {
+  .container-recipes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }

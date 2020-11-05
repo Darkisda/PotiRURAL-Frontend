@@ -6,7 +6,7 @@ import './style.css';
 
 export default function Recipe() {
   return (
-    <Container className="container-recipe">
+    <Container className="container-recipes">
       <UserHeader />
       <Row className="recipe-header">
         <h1 className="recipe-title">Nome da Receita</h1>
@@ -19,7 +19,7 @@ export default function Recipe() {
           />
         </div>
       </Row>
-      <Row>
+      <Row className="custom-row">
         <h3>Ingredientes:</h3>
         <p>
           Pudim: 1 lata de leite condensado 1 lata de leite (medida da lata de
@@ -27,7 +27,7 @@ export default function Recipe() {
           xícara de água
         </p>
       </Row>
-      <Row>
+      <Row className="custom-row">
         <h3>Modo de Preparo:</h3>
         <p>
           Pudim: Primeiro, bata bem os ovos no liquidificador. Acrescente o

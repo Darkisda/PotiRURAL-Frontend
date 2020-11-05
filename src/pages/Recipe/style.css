@@ -33,3 +33,11 @@
   transform: translateY(-20%);
   width: 100%;
 }
+
+.custom-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 3rem;
+  width: 100%;
+}
