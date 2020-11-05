@@ -74,3 +74,16 @@
   font-weight: 600;
   color: #43A047;
 }
+
+@media(max-width: 576px) {
+  .container-login {
+    height: 100vh;
+    width: 100vw;
+    display: block;
+    overflow-y: hidden;
+  }
+
+  .login-form {
+    margin: 5rem auto;
+  }
+}
