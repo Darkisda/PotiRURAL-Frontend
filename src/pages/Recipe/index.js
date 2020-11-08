@@ -6,7 +6,7 @@ import './style.css';
 
 export default function Recipe() {
   return (
-    <Container className="container-recipes">
+    <Container className="container-custom recipes">
       <UserHeader />
       <Row className="recipe-header">
         <h1 className="recipe-title">Nome da Receita</h1>

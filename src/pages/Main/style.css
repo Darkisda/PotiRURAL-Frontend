@@ -1,5 +1,4 @@
-.container-main {
-  width: 100vw;
+.main {
   height: 150vh;
 }
 
@@ -37,12 +36,8 @@
 }
 
 @media (max-width: 576px) {
-  .container-main {
-    width: 100vw;
+  .main {
     height: 280vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
   }
 
   .custom-row-main {

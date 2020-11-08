@@ -8,11 +8,11 @@ import './style.css';
 
 export default function RecipesPage() {
   return (
-    <Container className="container-recipes">
+    <Container className="container-custom recipes">
       <UserHeader />
       <Row>
-        <h1 className="text-header-recipes">
-          Algumas receitas que <br /> possam te interessar.
+        <h1 className="text-header">
+          Algumas receitas que possam te interessar.
         </h1>
       </Row>
       <Row className="row-right">

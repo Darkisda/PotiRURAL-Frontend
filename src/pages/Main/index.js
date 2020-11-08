@@ -7,7 +7,7 @@ import './style.css';
 
 export default function Main() {
   return (
-    <Container className="container-main">
+    <Container className="container-custom main">
       <UserHeader />
       <Row className="custom-row-main">
         <Col lg={5} xs={12} className="custom-col-main">
@@ -18,7 +18,9 @@ export default function Main() {
         </Col>
         <Col lg={7} xs={12} className="custom-col-main right">
           <h3>Artigos e Leituras</h3>
-          <div className="section-main" />
+          <Link to="/articles" className="section-main">
+            <div />
+          </Link>
         </Col>
       </Row>
       <Row className="custom-row-main">

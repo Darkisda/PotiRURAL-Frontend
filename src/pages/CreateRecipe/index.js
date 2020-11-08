@@ -1,16 +1,16 @@
 import React from 'react';
-import { Button, Col, Container, Form } from 'react-bootstrap';
+import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import UserHeader from '../../components/UserHeader';
 
 import './style.css';
 
 export default function CreateRecipe() {
   return (
-    <Container className="container-recipes">
+    <Container className="container-custom recipes">
       <UserHeader />
-      <div className="form-header">
+      <Row className="form-header">
         <h1 className="title">Crie uma nova receita deliciosa!</h1>
-      </div>
+      </Row>
       <Form className="form-create-recipe">
         <Form.Row className="custom-row-form">
           <Form.Group as={Col} controlId="recipe-name">

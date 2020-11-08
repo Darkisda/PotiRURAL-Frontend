@@ -7,6 +7,7 @@ import Main from './pages/Main';
 import RecipesPage from './pages/RecipesPage';
 import Recipe from './pages/Recipe';
 import CreateRecipe from './pages/CreateRecipe';
+import ArticlesPage from './pages/ArticlesPage';
 
 export default function Routes() {
   return (
@@ -19,6 +20,7 @@ export default function Routes() {
         <Route path="/recipes" exact component={RecipesPage} />
         <Route path="/recipes/create" exact component={CreateRecipe} />
         <Route path="/recipes/:id" exact component={Recipe} />
+        <Route path="/articles" exact component={ArticlesPage} />
       </Switch>
     </BrowserRouter>
   );
