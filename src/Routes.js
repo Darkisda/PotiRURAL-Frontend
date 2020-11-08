@@ -8,6 +8,8 @@ import RecipesPage from './pages/RecipesPage';
 import Recipe from './pages/Recipe';
 import CreateRecipe from './pages/CreateRecipe';
 import ArticlesPage from './pages/ArticlesPage';
+import Article from './pages/Article';
+import CreateArticle from './pages/CreateArticle';
 
 export default function Routes() {
   return (
@@ -21,6 +23,8 @@ export default function Routes() {
         <Route path="/recipes/create" exact component={CreateRecipe} />
         <Route path="/recipes/:id" exact component={Recipe} />
         <Route path="/articles" exact component={ArticlesPage} />
+        <Route path="/articles/create" exact component={CreateArticle} />
+        <Route path="/articles/:id" exact component={Article} />
       </Switch>
     </BrowserRouter>
   );

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, Modal } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { Modal } from 'react-bootstrap';
 
 import './style.css';
 
@@ -18,7 +19,9 @@ export default function ArticleCard() {
         commodo consequat.
       </Modal.Body>
       <Modal.Footer>
-        <Button>Ler artigo completo</Button>
+        <Link to="/articles/1" className="btn">
+          Ler artigo completo
+        </Link>
       </Modal.Footer>
     </Modal.Dialog>
   );
