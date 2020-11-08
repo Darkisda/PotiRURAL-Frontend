@@ -10,7 +10,7 @@ export default function ArticlesPage() {
   return (
     <Container className="container-custom articles">
       <UserHeader />
-      <Row>
+      <Row className="custom-row">
         <h1 className="text-header">
           Artigos que ajudarão ainda mais a produção.
         </h1>

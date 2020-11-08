@@ -8,15 +8,17 @@ export default function Recipe() {
   return (
     <Container className="container-custom recipes">
       <UserHeader />
-      <Row className="recipe-header">
-        <h1 className="recipe-title">Nome da Receita</h1>
-        <p className="recipe-description">Descrição breve da receita</p>
-        <div className="img-wrapper">
-          <img
-            src="https://i0.statig.com.br/bancodeimagens/cs/1t/wm/cs1twm81owp8iug586w3t6pjl.jpg"
-            alt="imagem-da-receita"
-            className="recipe-image"
-          />
+      <Row className="custom-row">
+        <div className="recipe-header">
+          <h1 className="recipe-title">Nome da Receita</h1>
+          <p className="recipe-description">Descrição breve da receita</p>
+          <div className="img-wrapper">
+            <img
+              src="https://i0.statig.com.br/bancodeimagens/cs/1t/wm/cs1twm81owp8iug586w3t6pjl.jpg"
+              alt="imagem-da-receita"
+              className="recipe-image"
+            />
+          </div>
         </div>
       </Row>
       <Row className="custom-row">
