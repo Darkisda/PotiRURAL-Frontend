@@ -37,6 +37,11 @@
   width: 100%;
 }
 
+.row {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
 .custom-col {
   display: flex;
   flex-direction: row;

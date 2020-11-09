@@ -14,10 +14,14 @@ export default function NavigationBar() {
       <Navbar.Collapse id="mobile">
         <Nav id="nav-custom">
           <Nav.Item>
-            <Nav.Link href="#">Artigos</Nav.Link>
+            <Link className="nav-link" to="/articles">
+              Artigos
+            </Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link href="#">Receitas</Nav.Link>
+            <Link className="nav-link" to="/recipes">
+              Receitas
+            </Link>
           </Nav.Item>
           <Nav.Item>
             <Nav.Link href="#">Feira Virtual</Nav.Link>
