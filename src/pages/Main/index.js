@@ -30,7 +30,9 @@ export default function Main() {
         </Col>
         <Col lg={7} xs={12} className="custom-col-main right">
           <h3>Feira Virtual</h3>
-          <div className="section-main" />
+          <Link to="/market" className="section-main">
+            <div />
+          </Link>
         </Col>
       </Row>
       <Row className="custom-row-main mobile">

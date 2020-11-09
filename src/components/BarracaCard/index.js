@@ -1,10 +1,11 @@
 import React from 'react';
-import { Button, Modal } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { FaWhatsapp, FaImage } from 'react-icons/fa';
 
 import './style.css';
 
-export default function Barraca() {
+export default function BarracaCard() {
   const number = [
     'Manga',
     'Tomarindo',
@@ -32,9 +33,9 @@ export default function Barraca() {
       </Modal.Body>
 
       <Modal.Footer className="barraca-footer">
-        <Button id="barraca-button">
+        <Link to="/market/1" className="btn" id="barraca-button">
           <FaWhatsapp size={24} /> Entrar em contato
-        </Button>
+        </Link>
       </Modal.Footer>
     </Modal.Dialog>
   );

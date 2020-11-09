@@ -10,6 +10,9 @@ import CreateRecipe from './pages/CreateRecipe';
 import ArticlesPage from './pages/ArticlesPage';
 import Article from './pages/Article';
 import CreateArticle from './pages/CreateArticle';
+import Market from './pages/Market';
+import CreateBarraca from './pages/CreateBarraca';
+import BarracaPage from './pages/BarracaPage';
 
 export default function Routes() {
   return (
@@ -25,6 +28,9 @@ export default function Routes() {
         <Route path="/articles" exact component={ArticlesPage} />
         <Route path="/articles/create" exact component={CreateArticle} />
         <Route path="/articles/:id" exact component={Article} />
+        <Route path="/market" exact component={Market} />
+        <Route path="/market/create" exact component={CreateBarraca} />
+        <Route path="/market/:id" exact component={BarracaPage} />
       </Switch>
     </BrowserRouter>
   );

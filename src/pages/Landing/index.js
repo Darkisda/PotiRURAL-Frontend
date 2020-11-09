@@ -3,7 +3,7 @@ import { Button, Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 import Navigationbar from '../../components/Navigationbar';
-import Barraca from '../../components/Barraca';
+import BarracaCard from '../../components/BarracaCard';
 
 import agricultor from '../../assets/agricultor.svg';
 import feira from '../../assets/feira.svg';
@@ -66,9 +66,9 @@ export default function Landing() {
             </h2>
           </Col>
           <Row id="barracas">
-            <Barraca />
-            <Barraca />
-            <Barraca />
+            <BarracaCard />
+            <BarracaCard />
+            <BarracaCard />
           </Row>
         </Row>
         <hr />
