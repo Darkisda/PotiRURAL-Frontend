@@ -2,6 +2,11 @@
   width: 100vw;
 }
 
+.modal-dialog {
+  max-width: 100%;
+  margin: 2rem auto;
+}
+
 .form-control {
   border: 0.2rem solid #43A047;
   border-radius: 8px;

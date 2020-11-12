@@ -1,0 +1,90 @@
+.barraca-page,
+.barraca-page .modal-content{
+  width: 80%;
+  margin: 3rem auto;
+}
+
+.barraca-title {
+  font-weight: 600;
+}
+
+.barraca-description {
+  font-size: 0.8rem;
+}
+
+.products {
+  font-size: 1.2rem;
+  width: 100%;
+}
+
+.products-row {
+  width: 100%;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 0.3rem solid #4CAF50;
+  border-radius: 3px;
+  color: #212121;
+}
+
+.products-row .product-name {
+  display: flex;
+  font-weight: 600;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-left: 2.5rem;
+  width: 50%;
+}
+
+.products-row .product-price {
+  width: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 0.3rem solid #4CAF50;
+  border-top-left-radius: 3px;
+}
+
+.products-row .product-meansurement {
+  width: 25%;
+  display: flex;
+  padding-right: 2.5rem;
+  align-items: flex-end;
+  justify-content: flex-end;
+  border-left: 0.3rem solid #4CAF50;
+  border-top-left-radius: 3px;
+}
+
+.barraca-button {
+  width: 100%;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.barraca-button:hover {
+  color: #ffe;
+}
+
+@media (max-width: 576px) {
+  .barraca-page,
+  .barraca-page .modal-content{
+    width: 100%;
+  }
+
+  .barraca-description {
+    font-size: 1rem;
+  }
+
+  .barraca-title {
+    text-align: center;
+  }
+
+  .products-row .product-name {
+    padding-left: 1rem;
+  }
+
+  .products-row .product-meansurement {
+    padding-right: 1rem;
+  }
+}
