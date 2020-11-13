@@ -3,17 +3,19 @@ import { Link } from 'react-router-dom';
 
 import './style.css';
 
-export default function RecipeCard() {
+export default function RecipeCard(props) {
+  const { recipe } = props;
+
   return (
     <div className="recipe-card">
       <div className="recipe-content-description">
-        <h3 className="recipe-name">Nome da receita</h3>
+        <h3 className="recipe-name">{recipe.name}</h3>
         <p className="recipe-description">
           Descrição rápida a respeito da receita
         </p>
       </div>
       <div className="gradient-opacity" />
-      <Link to={`/recipes/${1}`} className="recipe-link">
+      <Link to={`/recipes/${recipe.id}`} className="recipe-link">
         Veja a receira completa!
       </Link>
       <img
