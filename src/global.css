@@ -7,6 +7,42 @@
   margin: 2rem auto;
 }
 
+.pagination .page-item {
+  padding: 0;
+  height: auto;
+}
+
+.pagination .page-item .page-link{
+  height: 100%;
+  width: 2.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0;
+  border: 0.1rem solid #43A047;
+}
+
+.pagination .page-item .page-link:hover {
+  background-color: #f3f3f3;
+}
+
+.pagination .page-item .page-link:focus {
+  border-color: #43A047;
+  box-shadow: 0 0 0 .2rem #C8E6C9;
+}
+
+.pagination .page-item .page-link span {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 1.8rem;
+  color: #43A047;
+}
+
 .form-control {
   border: 0.2rem solid #43A047;
   border-radius: 8px;
