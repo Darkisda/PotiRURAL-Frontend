@@ -10,16 +10,14 @@ export default function Recipe(props) {
 
   const { match } = props;
 
-  console.log(match.params.id);
-
-  async function fecthRecipeByID() {
+  async function fetchRecipeByID() {
     const response = await api.get(`recipe/${match.params.id}`);
 
     setRecipe(response.data);
   }
 
   useEffect(() => {
-    fecthRecipeByID();
+    fetchRecipeByID();
   }, []);
 
   return (

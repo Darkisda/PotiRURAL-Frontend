@@ -24,7 +24,9 @@ export default function NavigationBar() {
             </Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link href="#">Feira Virtual</Nav.Link>
+            <Link className="nav-link" to="/market">
+              Feira Virtual
+            </Link>
           </Nav.Item>
           <Nav.Item>
             <Nav.Link href="#">Pergunte ao especialista</Nav.Link>

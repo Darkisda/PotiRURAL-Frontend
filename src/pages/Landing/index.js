@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import api from '../../server/api';
 
 import Navigationbar from '../../components/Navigationbar';
 import BarracaCard from '../../components/BarracaCard';
@@ -17,6 +18,19 @@ import './style.css';
 import Footer from '../../components/Footer';
 
 export default function Landing() {
+  const [barracaExemples, setBarracasExemples] = useState([]);
+
+  async function fetchBarracasExemples() {
+    const response = await api.get('market?page=1&limit=3');
+
+    setBarracasExemples(response.data.data);
+  }
+
+  useEffect(() => {
+    fetchBarracasExemples();
+    console.log(barracaExemples);
+  }, []);
+
   return (
     <>
       <Container>
@@ -66,9 +80,15 @@ export default function Landing() {
             </h2>
           </Col>
           <Row id="barracas">
-            <BarracaCard />
-            <BarracaCard />
-            <BarracaCard />
+            {barracaExemples ? (
+              barracaExemples.map((barraca) => (
+                <BarracaCard key={barraca.id} barraca={barraca} />
+              ))
+            ) : (
+              <>
+                <h1>Loading...</h1>
+              </>
+            )}
           </Row>
         </Row>
         <hr />
