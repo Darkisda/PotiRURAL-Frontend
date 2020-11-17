@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
+import jwt from 'jwt-decode';
 import history from '../../history';
 import api from '../../server/api';
 
@@ -7,6 +8,17 @@ const Context = createContext();
 function AuthProvider({ children }) {
   const [authenticate, setAuthenticate] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [userLogged, setUserLogged] = useState({});
+
+  function getUserFromJWT() {
+    const token = localStorage.getItem('accessToken');
+
+    if (token) {
+      const { user } = jwt(token);
+
+      setUserLogged(user);
+    }
+  }
 
   useEffect(() => {
     const token = localStorage.getItem('accessToken');
@@ -17,6 +29,7 @@ function AuthProvider({ children }) {
     }
 
     setLoaded(true);
+    getUserFromJWT();
   }, []);
 
   async function handleLogin(email, password) {
@@ -47,7 +60,7 @@ function AuthProvider({ children }) {
 
   return (
     <Context.Provider
-      value={{ authenticate, handleLogin, handleLogout, loaded }}
+      value={{ authenticate, handleLogin, handleLogout, loaded, userLogged }}
     >
       {children}
     </Context.Provider>
