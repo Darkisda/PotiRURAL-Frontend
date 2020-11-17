@@ -1,31 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
-import api from '../../server/api';
+import { Context } from '../../auth/AuthContext';
 
 import './style.css';
 
 export default function SignIn() {
+  const { handleLogin } = useContext(Context);
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const history = useHistory();
-
-  function handleLogin(e) {
+  async function handleSignIn(e) {
     e.preventDefault();
-    api
-      .post('auth/signin', {
-        email,
-        password,
-      })
-      .then((response) => {
-        localStorage.setItem('accessToken', response.data.accessToken);
-        history.push('/');
-      })
-      .catch(() => {
-        alert('Credênciais Inválidas');
-      });
+    await handleLogin(email, password);
   }
 
   return (
@@ -36,7 +25,7 @@ export default function SignIn() {
           <h1 id="potirural">potiRURAL</h1>
         </Link>
       </div>
-      <Form className="login-form" onSubmit={handleLogin}>
+      <Form className="login-form" onSubmit={handleSignIn}>
         <h1 id="potirural">potiRURAL</h1>
         <Form.Group controlId="email-signin">
           <Form.Label className="custom-label">Email:</Form.Label>
