@@ -28,7 +28,6 @@ export default function Landing() {
 
   useEffect(() => {
     fetchBarracasExemples();
-    console.log(barracaExemples);
   }, []);
 
   return (

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
 import api from '../../server/api';
 
@@ -10,18 +10,22 @@ export default function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  async function handleLogin(e) {
+  const history = useHistory();
+
+  function handleLogin(e) {
     e.preventDefault();
-    const { data } = await api.post('auth/signin', {
-      email,
-      password,
-    });
-    localStorage.setItem('accessToken', data.accessToken);
-    api.interceptors.request.use((config) => {
-      config.headers.authorization = `Bearer ${localStorage.getItem(
-        'accessToken'
-      )}`;
-    });
+    api
+      .post('auth/signin', {
+        email,
+        password,
+      })
+      .then((response) => {
+        localStorage.setItem('accessToken', response.data.accessToken);
+        history.push('/');
+      })
+      .catch(() => {
+        alert('Credênciais Inválidas');
+      });
   }
 
   return (

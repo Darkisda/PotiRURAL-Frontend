@@ -18,10 +18,15 @@ export default function Routes() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/" exact component={Landing} />
+        <Route
+          path="/"
+          exact
+          component={
+            localStorage.getItem('accessToken') !== null ? Main : Landing
+          }
+        />
         <Route path="/signin" exact component={SignIn} />
         <Route path="/signup" exact component={SignUp} />
-        <Route path="/main" component={Main} />
         <Route path="/recipes" exact component={RecipesPage} />
         <Route path="/recipes/create" exact component={CreateRecipe} />
         <Route path="/recipes/:id" exact component={Recipe} />
