@@ -15,6 +15,7 @@ export default function Market() {
 
   async function fetchBarracas() {
     const response = await api.get(`market?page=${page}&limit=9`);
+    console.debug('Page', page);
 
     setPageInfo({
       totalCount: response.data.totalCount,

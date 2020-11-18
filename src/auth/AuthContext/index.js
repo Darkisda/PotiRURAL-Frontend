@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react';
 import jwt from 'jwt-decode';
-import history from '../../history';
+
 import api from '../../server/api';
 
 const Context = createContext();
@@ -43,15 +43,14 @@ function AuthProvider({ children }) {
     localStorage.setItem('accessToken', JSON.stringify(accessToken));
     api.defaults.headers.Authorization = `Bearer ${accessToken}`;
     setAuthenticate(true);
+    getUserFromJWT();
     setLoaded(true);
-    history.push('/');
   }
 
   function handleLogout() {
     localStorage.removeItem('accessToken');
     api.defaults.headers.Authorization = undefined;
     setAuthenticate(false);
-    history.push('/');
   }
 
   if (!loaded) {

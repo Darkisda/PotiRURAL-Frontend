@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
 import { Context } from '../../auth/AuthContext';
 
@@ -8,6 +8,7 @@ import './style.css';
 
 export default function SignIn() {
   const { handleLogin } = useContext(Context);
+  const history = useHistory();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -15,6 +16,7 @@ export default function SignIn() {
   async function handleSignIn(e) {
     e.preventDefault();
     await handleLogin(email, password);
+    history.push('/');
   }
 
   return (

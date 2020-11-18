@@ -5,12 +5,13 @@ import SignUp from './pages/SignUp';
 import MainWrapper from './pages/MainWrapper';
 import RecipesPage from './pages/RecipesPage';
 import Recipe from './pages/Recipe';
-import CreateRecipe from './pages/CreateRecipe';
 import ArticlesPage from './pages/ArticlesPage';
 import Article from './pages/Article';
-import CreateArticle from './pages/CreateArticle';
 import Market from './pages/Market';
 import CreateBarraca from './pages/CreateBarraca';
+import CreateArticle from './pages/CreateArticle';
+import CreateRecipe from './pages/CreateRecipe';
+
 import BarracaPage from './pages/BarracaPage';
 
 export default function Routes() {

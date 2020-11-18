@@ -4,7 +4,17 @@ import Landing from '../Landing';
 import { Context } from '../../auth/AuthContext';
 
 export default function MainWrapper() {
-  const { authenticate, loaded } = useContext(Context);
+  const { authenticate } = useContext(Context);
 
-  return <>{authenticate && loaded ? <Main /> : <Landing />}</>;
+  return (
+    <>
+      {authenticate ? (
+        <>
+          <Main />
+        </>
+      ) : (
+        <Landing />
+      )}
+    </>
+  );
 }
