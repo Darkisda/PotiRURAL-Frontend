@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Col, Container, Row, Pagination } from 'react-bootstrap';
+import { Col, Container, Row, Pagination, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import api from '../../server/api';
 import UserHeader from '../../components/UserHeader';
 import BarracaCard from '../../components/BarracaCard';
+import './style.css';
 
 export default function Market() {
   const [barracas, setBarracas] = useState([]);
@@ -11,7 +12,8 @@ export default function Market() {
 
   const [page, setPage] = useState(1);
   const [pageInfo, setPageInfo] = useState({ totalCount: 0, limit: 9 });
-  const [totalPages, setTotalPages] = useState(0);
+
+  const totalPages = Math.trunc(pageInfo.totalCount / pageInfo.limit) + 1;
 
   async function fetchBarracas() {
     const response = await api.get(`market?page=${page}&limit=9`);
@@ -21,27 +23,28 @@ export default function Market() {
       limit: response.data.limit,
     });
     setBarracas(response.data.data);
-    setTotalPages(Math.trunc(pageInfo.totalCount / pageInfo.limit) + 1);
-    setLoaded(true);
   }
 
   useEffect(async () => {
     setLoaded(false);
     await fetchBarracas();
-  }, [page || totalPages]);
+    setLoaded(true);
+  }, [page]);
 
   function PrevPage() {
-    if (page <= 1) {
+    if (page === 1) {
       setPage(1);
+    } else {
+      setPage(page - 1);
     }
-    setPage(page - 1);
   }
 
   function NextPage() {
-    if (page >= totalPages) {
+    if (page === totalPages) {
       setPage(page);
+    } else {
+      setPage(page + 1);
     }
-    setPage(page + 1);
   }
 
   return (
@@ -81,7 +84,10 @@ export default function Market() {
           </>
         ) : (
           <Row className="custom-row">
-            <h1>Loading...</h1>
+            <div className="loading">
+              <Spinner animation="border" />
+              <h1>Loading...</h1>
+            </div>
           </Row>
         )}
       </Row>
