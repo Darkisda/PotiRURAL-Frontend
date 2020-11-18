@@ -92,6 +92,15 @@
   height: auto;
 }
 
+.loading {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #43A047;
+}
+
 #potirural {
   font-size: 1.8rem;
   font-weight: 600;

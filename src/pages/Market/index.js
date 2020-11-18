@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import api from '../../server/api';
 import UserHeader from '../../components/UserHeader';
 import BarracaCard from '../../components/BarracaCard';
-import './style.css';
 
 export default function Market() {
   const [barracas, setBarracas] = useState([]);

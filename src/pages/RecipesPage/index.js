@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row } from 'react-bootstrap';
+import { Container, Row, Pagination, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import api from '../../server/api';
 import UserHeader from '../../components/UserHeader';
@@ -11,16 +11,42 @@ export default function RecipesPage() {
   const [recipes, setRecipes] = useState([]);
   const [isLoaded, setLoaded] = useState(false);
 
-  async function fetchRecipes() {
-    const response = await api.get('recipe?page=1&limit=8');
+  const [page, setPage] = useState(1);
+  const [pageInfo, setPageInfo] = useState({ totalCount: 0, limit: 9 });
 
+  const totalPages = Math.trunc(pageInfo.totalCount / pageInfo.limit) + 1;
+
+  async function fetchRecipes() {
+    const response = await api.get(`recipe?page=${page}&limit=8`);
+
+    setPageInfo({
+      totalCount: response.data.totalCount,
+      limit: response.data.limit,
+    });
     setRecipes(response.data.data);
-    setLoaded(true);
   }
 
-  useEffect(() => {
-    fetchRecipes();
-  }, []);
+  useEffect(async () => {
+    setLoaded(false);
+    await fetchRecipes();
+    setLoaded(true);
+  }, [page]);
+
+  function PrevPage() {
+    if (page === 1) {
+      setPage(1);
+    } else {
+      setPage(page - 1);
+    }
+  }
+
+  function NextPage() {
+    if (page === totalPages) {
+      setPage(page);
+    } else {
+      setPage(page + 1);
+    }
+  }
 
   return (
     <Container className="container-custom recipes">
@@ -35,13 +61,28 @@ export default function RecipesPage() {
       </Row>
       <div className="recipes-content">
         {isLoaded ? (
-          recipes.map((recipe) => (
-            <Row key={recipe.id} className="custom-row">
-              <RecipeCard recipe={recipe} />
+          <>
+            <Row className="custom-row">
+              <Pagination>
+                <Pagination.First onClick={() => setPage(1)} />
+                <Pagination.Prev onClick={() => PrevPage()} />
+                <Pagination.Next onClick={() => NextPage()} />
+                <Pagination.Last onClick={() => setPage(totalPages)} />
+              </Pagination>
             </Row>
-          ))
+            {recipes.map((recipe) => (
+              <Row key={recipe.id} className="custom-row">
+                <RecipeCard recipe={recipe} />
+              </Row>
+            ))}
+          </>
         ) : (
-          <h1>Loading...</h1>
+          <Row className="custom-row">
+            <div className="loading">
+              <Spinner animation="border" />
+              <h1>Loading...</h1>
+            </div>
+          </Row>
         )}
       </div>
     </Container>
