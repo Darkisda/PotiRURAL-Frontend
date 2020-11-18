@@ -15,7 +15,6 @@ export default function Market() {
 
   async function fetchBarracas() {
     const response = await api.get(`market?page=${page}&limit=9`);
-    console.debug('Page', page);
 
     setPageInfo({
       totalCount: response.data.totalCount,
@@ -26,9 +25,24 @@ export default function Market() {
     setLoaded(true);
   }
 
-  useEffect(() => {
-    fetchBarracas();
-  }, [page]);
+  useEffect(async () => {
+    setLoaded(false);
+    await fetchBarracas();
+  }, [page || totalPages]);
+
+  function PrevPage() {
+    if (page <= 1) {
+      setPage(1);
+    }
+    setPage(page - 1);
+  }
+
+  function NextPage() {
+    if (page >= totalPages) {
+      setPage(page);
+    }
+    setPage(page + 1);
+  }
 
   return (
     <Container className="custom-container">
@@ -47,12 +61,8 @@ export default function Market() {
             <Row className="custom-row">
               <Pagination>
                 <Pagination.First onClick={() => setPage(1)} />
-                <Pagination.Prev
-                  onClick={() => setPage(page <= 1 ? 1 : page - 1)}
-                />
-                <Pagination.Next
-                  onClick={() => setPage(page >= totalPages ? page : page + 1)}
-                />
+                <Pagination.Prev onClick={() => PrevPage()} />
+                <Pagination.Next onClick={() => NextPage()} />
                 <Pagination.Last onClick={() => setPage(totalPages)} />
               </Pagination>
             </Row>
@@ -70,7 +80,9 @@ export default function Market() {
             ))}
           </>
         ) : (
-          <h1>Loading...</h1>
+          <Row className="custom-row">
+            <h1>Loading...</h1>
+          </Row>
         )}
       </Row>
     </Container>
