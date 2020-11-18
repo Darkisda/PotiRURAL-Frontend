@@ -24,11 +24,7 @@ export default function Main() {
         </Col>
       </Row>
       <Row className="custom-row-main">
-        <Col lg={5} xs={12} className="custom-col-main">
-          <h3>Classificados</h3>
-          <div className="section-main" />
-        </Col>
-        <Col lg={7} xs={12} className="custom-col-main right">
+        <Col lg={12} xs={12} className="custom-col-main">
           <h3>Feira Virtual</h3>
           <Link to="/market" className="section-main">
             <div />
