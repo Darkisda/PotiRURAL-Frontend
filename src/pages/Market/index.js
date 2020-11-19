@@ -12,7 +12,10 @@ export default function Market() {
   const [page, setPage] = useState(1);
   const [pageInfo, setPageInfo] = useState({ totalCount: 0, limit: 9 });
 
-  const totalPages = Math.trunc(pageInfo.totalCount / pageInfo.limit) + 1;
+  const totalPages =
+    pageInfo.totalCount > 9
+      ? Math.trunc(pageInfo.totalCount / pageInfo.limit) + 1
+      : 1;
 
   async function fetchBarracas() {
     const response = await api.get(`market?page=${page}&limit=9`);

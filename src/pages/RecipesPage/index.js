@@ -14,7 +14,10 @@ export default function RecipesPage() {
   const [page, setPage] = useState(1);
   const [pageInfo, setPageInfo] = useState({ totalCount: 0, limit: 9 });
 
-  const totalPages = Math.trunc(pageInfo.totalCount / pageInfo.limit) + 1;
+  const totalPages =
+    pageInfo.totalCount > 9
+      ? Math.trunc(pageInfo.totalCount / pageInfo.limit) + 1
+      : 1;
 
   async function fetchRecipes() {
     const response = await api.get(`recipe?page=${page}&limit=8`);
