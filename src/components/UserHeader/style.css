@@ -26,6 +26,16 @@
   color: #0288D1;
 }
 
+.signup {
+  color: #03A9F4;
+  text-decoration: none;
+}
+
+.signup:hover {
+  color: #0288D1;
+  text-decoration: none;
+}
+
 @media (max-width: 576px) {  
   .perfil-header {
     height: 8rem;

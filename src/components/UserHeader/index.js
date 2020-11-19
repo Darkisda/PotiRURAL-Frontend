@@ -5,7 +5,7 @@ import { Context } from '../../auth/AuthContext';
 import './style.css';
 
 export default function UserHeader() {
-  const { userLogged, loaded, handleLogout } = useContext(Context);
+  const { userLogged, handleLogout } = useContext(Context);
   const history = useHistory();
 
   function handleSignOut(e) {
@@ -21,15 +21,19 @@ export default function UserHeader() {
       </Link>
       <div className="wrapper-user-header">
         <h2 className="name">
-          {loaded && userLogged ? (
-            `Olá ${userLogged.firstName} ${userLogged.lastName}`
+          {userLogged.firstName && userLogged.lastName ? (
+            <div>
+              {`Olá ${userLogged.firstName} ${userLogged.lastName}`}
+              <button type="button" onClick={handleSignOut}>
+                Sair
+              </button>
+            </div>
           ) : (
-            <p>Cadastre-se</p>
+            <Link to="/signup" className="signup">
+              Cadastre-se
+            </Link>
           )}
         </h2>
-        <button type="button" onClick={handleSignOut}>
-          Sair
-        </button>
       </div>
     </Row>
   );
