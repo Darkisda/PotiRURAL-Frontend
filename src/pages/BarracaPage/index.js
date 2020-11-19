@@ -18,9 +18,8 @@ export default function BarracaPage(props) {
     setBarraca(response.data);
   }
 
-  useEffect(() => {
-    fetchBarracaByID();
-    console.log(barraca);
+  useEffect(async () => {
+    await fetchBarracaByID();
   }, []);
 
   return (

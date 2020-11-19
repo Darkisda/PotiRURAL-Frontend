@@ -4,22 +4,19 @@ import { Modal } from 'react-bootstrap';
 
 import './style.css';
 
-export default function ArticleCard() {
+export default function ArticleCard(props) {
+  const { article } = props;
+
   return (
     <Modal.Dialog className="article-card">
       <Modal.Header>
-        <Modal.Title>
-          The standard Lorem Ipsum passage, used since the 1500s
-        </Modal.Title>
+        <Modal.Title>{article.title}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat.
+        <p>{article.content.substring(0, 160)}</p>
       </Modal.Body>
       <Modal.Footer>
-        <Link to="/articles/1" className="btn">
+        <Link to={`/articles/${article.id}`} className="btn">
           Ler artigo completo
         </Link>
       </Modal.Footer>
