@@ -51,6 +51,32 @@ export default function RecipesPage() {
     }
   }
 
+  function LoadedRecipes() {
+    return recipes.length !== 0 ? (
+      <>
+        <Row className="custom-row">
+          <Pagination>
+            <Pagination.First onClick={() => setPage(1)} />
+            <Pagination.Prev onClick={() => PrevPage()} />
+            <Pagination.Next onClick={() => NextPage()} />
+            <Pagination.Last onClick={() => setPage(totalPages)} />
+          </Pagination>
+        </Row>
+        {recipes.map((recipe) => (
+          <Row key={recipe.id} className="custom-row">
+            <RecipeCard recipe={recipe} />
+          </Row>
+        ))}
+      </>
+    ) : (
+      <Row className="custom-row empty-row">
+        <h1 className="empty">
+          Oops... parace que estamos sem nenhuma Receita. Crie uma agora mesmo!
+        </h1>
+      </Row>
+    );
+  }
+
   return (
     <Container className="container-custom recipes">
       <UserHeader />
@@ -64,21 +90,7 @@ export default function RecipesPage() {
       </Row>
       <div className="recipes-content">
         {isLoaded ? (
-          <>
-            <Row className="custom-row">
-              <Pagination>
-                <Pagination.First onClick={() => setPage(1)} />
-                <Pagination.Prev onClick={() => PrevPage()} />
-                <Pagination.Next onClick={() => NextPage()} />
-                <Pagination.Last onClick={() => setPage(totalPages)} />
-              </Pagination>
-            </Row>
-            {recipes.map((recipe) => (
-              <Row key={recipe.id} className="custom-row">
-                <RecipeCard recipe={recipe} />
-              </Row>
-            ))}
-          </>
+          <LoadedRecipes />
         ) : (
           <Row className="custom-row">
             <div className="loading">

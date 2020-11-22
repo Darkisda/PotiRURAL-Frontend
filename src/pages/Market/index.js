@@ -49,6 +49,39 @@ export default function Market() {
     }
   }
 
+  function LoadedBarracas() {
+    return barracas.length !== 0 ? (
+      <>
+        <Row className="custom-row">
+          <Pagination>
+            <Pagination.First onClick={() => setPage(1)} />
+            <Pagination.Prev onClick={() => PrevPage()} />
+            <Pagination.Next onClick={() => NextPage()} />
+            <Pagination.Last onClick={() => setPage(totalPages)} />
+          </Pagination>
+        </Row>
+        {barracas.map((barraca) => (
+          <Col
+            key={barraca.id}
+            lg={4}
+            sm={12}
+            xs={12}
+            md={4}
+            className="custom-col"
+          >
+            <BarracaCard barraca={barraca} />
+          </Col>
+        ))}
+      </>
+    ) : (
+      <Row className="custom-row empty-row">
+        <h1 className="empty">
+          Oops... parace que estamos sem nenhuma Barraca. Crie uma agora mesmo!
+        </h1>
+      </Row>
+    );
+  }
+
   return (
     <Container className="custom-container">
       <UserHeader />
@@ -62,28 +95,7 @@ export default function Market() {
       </Row>
       <Row className="custom-row">
         {isLoaded ? (
-          <>
-            <Row className="custom-row">
-              <Pagination>
-                <Pagination.First onClick={() => setPage(1)} />
-                <Pagination.Prev onClick={() => PrevPage()} />
-                <Pagination.Next onClick={() => NextPage()} />
-                <Pagination.Last onClick={() => setPage(totalPages)} />
-              </Pagination>
-            </Row>
-            {barracas.map((barraca) => (
-              <Col
-                key={barraca.id}
-                lg={4}
-                sm={12}
-                xs={12}
-                md={4}
-                className="custom-col"
-              >
-                <BarracaCard barraca={barraca} />
-              </Col>
-            ))}
-          </>
+          <LoadedBarracas />
         ) : (
           <Row className="custom-row">
             <div className="loading">

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Col, Container, Row, Pagination } from 'react-bootstrap';
+import { Col, Container, Row, Pagination, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import UserHeader from '../../components/UserHeader';
 import ArticleCard from '../../components/ArticleCard';
@@ -51,6 +51,40 @@ export default function ArticlesPage() {
     }
   }
 
+  function LoadedArticles() {
+    return articles.length !== 0 ? (
+      <>
+        <Row className="custom-row">
+          <Pagination>
+            <Pagination.First onClick={() => setPage(1)} />
+            <Pagination.Prev onClick={() => PrevPage()} />
+            <Pagination.Next onClick={() => NextPage()} />
+            <Pagination.Last onClick={() => setPage(totalPages)} />
+          </Pagination>
+        </Row>
+        {articles.map((article) => (
+          <Col
+            key={article.id}
+            lg={4}
+            sm={12}
+            xs={12}
+            md={4}
+            className="custom-col"
+          >
+            <ArticleCard article={article} />
+          </Col>
+        ))}
+      </>
+    ) : (
+      <Row className="custom-row empty-row">
+        <h1 className="empty">
+          Oops... parace que estamos sem nenhum Artigo. Crie um novo agora
+          mesmo!
+        </h1>
+      </Row>
+    );
+  }
+
   return (
     <Container className="container-custom articles">
       <UserHeader />
@@ -64,32 +98,14 @@ export default function ArticlesPage() {
       </Row>
       <Row className="custom-row">
         {isLoaded ? (
-          <>
-            <Row className="custom-row">
-              <Pagination>
-                <Pagination.First onClick={() => setPage(1)} />
-                <Pagination.Prev onClick={() => PrevPage()} />
-                <Pagination.Next onClick={() => NextPage()} />
-                <Pagination.Last onClick={() => setPage(totalPages)} />
-              </Pagination>
-            </Row>
-            {articles.map((article) => (
-              <Col
-                key={article.id}
-                lg={4}
-                sm={12}
-                xs={12}
-                md={4}
-                className="custom-col"
-              >
-                <ArticleCard article={article} />
-              </Col>
-            ))}
-          </>
+          <LoadedArticles />
         ) : (
-          <div className="loading">
-            <p>Loading...</p>
-          </div>
+          <Row className="custom-row">
+            <div className="loading">
+              <Spinner animation="border" />
+              <h1>Loading...</h1>
+            </div>
+          </Row>
         )}
       </Row>
     </Container>

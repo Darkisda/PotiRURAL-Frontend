@@ -101,6 +101,17 @@
   color: #43A047;
 }
 
+.empty {
+  font-size: 2.2rem;
+  color: #03A9F4;
+  font-weight: 600;
+}
+
+.empty-row {
+  margin-top: 1.5rem !important;
+  justify-content: center;
+}
+
 #potirural {
   font-size: 1.8rem;
   font-weight: 600;
