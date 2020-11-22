@@ -5,7 +5,7 @@ import { Context } from '../../auth/AuthContext';
 import './style.css';
 
 export default function UserHeader() {
-  const { userLogged, handleLogout } = useContext(Context);
+  const { userLogged, handleLogout, authenticate } = useContext(Context);
   const history = useHistory();
 
   function handleSignOut(e) {
@@ -21,7 +21,7 @@ export default function UserHeader() {
       </Link>
       <div className="wrapper-user-header">
         <h2 className="name">
-          {userLogged.firstName && userLogged.lastName ? (
+          {authenticate && userLogged.firstName && userLogged.lastName ? (
             <div>
               {`Olá ${userLogged.firstName} ${userLogged.lastName}`}
               <button type="button" onClick={handleSignOut}>
