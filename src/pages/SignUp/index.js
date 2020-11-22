@@ -11,7 +11,7 @@ export default function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [occupation, setOccupation] = useState('');
-  const [whatsapp, setWhatsapp] = useState(0);
+  const [whatsapp, setWhatsapp] = useState('');
 
   const history = useHistory();
 
@@ -36,12 +36,12 @@ export default function SignUp() {
   }
 
   async function handleSignUp() {
-    // console.log(firstName, lastName, whatsapp, occupation, email, password);
+    const formattedWhatsapp = `+55${whatsapp}`;
 
     const response = await api.post('auth/signup', {
       firstName,
       lastName,
-      whatsapp,
+      whatsapp: formattedWhatsapp,
       occupation,
       email,
       password,
@@ -128,8 +128,10 @@ export default function SignUp() {
           <Form.Group as={Col} controlId="whatsapp">
             <Form.Label className="custom-label"> Whatsapp:</Form.Label>
             <Form.Control
-              type="number"
+              type="tel"
               required
+              placeholder="Exemplo: 84999999999"
+              pattern="[0-9]{11}"
               onChange={(e) => {
                 setWhatsapp(e.target.value);
               }}
@@ -140,6 +142,7 @@ export default function SignUp() {
             <Form.Control
               as="select"
               defaultValue="DEFAULT"
+              required
               onChange={(e) => {
                 setOccupation(e.target.value);
               }}
