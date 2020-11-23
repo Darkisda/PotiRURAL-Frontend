@@ -11,6 +11,7 @@ export default function CreateArticle() {
   const { authenticate, userLogged } = useContext(Context);
 
   const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
   const [content, setContent] = useState('');
 
   const history = useHistory();
@@ -28,9 +29,9 @@ export default function CreateArticle() {
   async function handleCreate() {
     const response = await api.post('/article', {
       title,
+      description,
       content,
     });
-    console.log(response);
     return response;
   }
 
@@ -65,6 +66,22 @@ export default function CreateArticle() {
                   required
                   onChange={(e) => {
                     setTitle(e.target.value);
+                  }}
+                />
+              </Form.Group>
+            </Form.Row>
+            <Form.Row className="custom-row-form">
+              <Form.Group as={Col} controlId="article-description">
+                <Form.Label className="custom-label">
+                  Uma breve descrição do que se trata o artigo.
+                </Form.Label>
+                <Form.Control
+                  as="textarea"
+                  rows={2}
+                  className="custom-textarea"
+                  required
+                  onChange={(e) => {
+                    setDescription(e.target.value);
                   }}
                 />
               </Form.Group>

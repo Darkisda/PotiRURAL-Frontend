@@ -13,7 +13,7 @@ export default function ArticleCard(props) {
         <Modal.Title>{article.title}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <p>{article.content.substring(0, 160)}</p>
+        <p>{article.description.substring(0, 160)}...</p>
       </Modal.Body>
       <Modal.Footer>
         <Link to={`/articles/${article.id}`} className="btn">

@@ -8,6 +8,7 @@ import './style.css';
 export default function Article(props) {
   const [article, setArticle] = useState({});
   const [paragraphs, setParagraphs] = useState([]);
+  const [date, setDate] = useState('');
 
   const { match } = props;
 
@@ -23,12 +24,19 @@ export default function Article(props) {
     }
   }
 
+  function handleDate() {
+    if (article.createdAt !== undefined) {
+      setDate(article.createdAt);
+    }
+  }
+
   useEffect(async () => {
     await fetchArticleByID();
   }, []);
 
   useEffect(() => {
     handleSeparateParagraphs();
+    handleDate();
   }, [article]);
 
   return (
@@ -40,7 +48,14 @@ export default function Article(props) {
             <div className="article-header">
               <h1>{article.title}</h1>
               <h5>{`Criado por: ${article.author.firstName} ${article.author.lastName}`}</h5>
-              <h5>Data: 8/11/2020</h5>
+              <h5>
+                Data:{' '}
+                {new Date(date).toLocaleDateString('pt-BR', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric',
+                })}
+              </h5>
             </div>
           </Row>
           <hr />
