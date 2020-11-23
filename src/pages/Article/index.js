@@ -7,6 +7,7 @@ import './style.css';
 
 export default function Article(props) {
   const [article, setArticle] = useState({});
+  const [paragraphs, setParagraphs] = useState([]);
 
   const { match } = props;
 
@@ -16,16 +17,25 @@ export default function Article(props) {
     setArticle(response.data);
   }
 
+  function handleSeparateParagraphs() {
+    if (article.content !== undefined) {
+      setParagraphs(article.content.split('\n\n' || '\n'));
+    }
+  }
+
   useEffect(async () => {
     await fetchArticleByID();
   }, []);
+
+  useEffect(() => {
+    handleSeparateParagraphs();
+  }, [article]);
 
   return (
     <Container className="container-custom articles">
       <UserHeader />
       {article && article.author ? (
         <>
-          {console.log(article)}
           <Row className="custom-row">
             <div className="article-header">
               <h1>{article.title}</h1>
@@ -34,9 +44,12 @@ export default function Article(props) {
             </div>
           </Row>
           <hr />
-          <Row className="custom-row">
-            <p>{article.content}</p>
-          </Row>
+          {paragraphs.map((paragraph, idx) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <Row key={idx} className="row-article">
+              <p>{paragraph}</p>
+            </Row>
+          ))}
         </>
       ) : (
         <div className="loading">

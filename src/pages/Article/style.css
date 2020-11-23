@@ -1,0 +1,8 @@
+.row-article {
+  text-indent: 2rem;
+  text-align: justify;
+}
+
+.row-article  + .row-article  {
+  margin-top: 1rem;
+}

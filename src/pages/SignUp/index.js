@@ -55,8 +55,9 @@ export default function SignUp() {
     handleSignUp().then((response) => {
       if (response.status === 201) {
         handleSucess();
-      } else if (response.status === 400) {
-        console.log(response.data);
+      } else {
+        alert('Oops algo deu errado');
+        history.push('/signup');
       }
     });
   }
