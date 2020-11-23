@@ -19,7 +19,7 @@ export default function Article(props) {
 
   function handleSeparateParagraphs() {
     if (article.content !== undefined) {
-      setParagraphs(article.content.split('\n\n' || '\n'));
+      setParagraphs(article.content.split(/\n|\n\n/));
     }
   }
 
