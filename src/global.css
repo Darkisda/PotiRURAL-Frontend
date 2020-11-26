@@ -112,6 +112,33 @@
   justify-content: center;
 }
 
+.custom-file {
+  height: 3rem;
+}
+
+.custom-file-input {
+  height: 100%;
+}
+
+.custom-file-label{
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  border: 0.2rem solid #43A047;
+  border-radius: 8px;
+}
+
+.custom-file-label::after {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: #fff;
+  background: #43A047;
+}
+
 #potirural {
   font-size: 1.8rem;
   font-weight: 600;

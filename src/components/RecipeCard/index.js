@@ -10,16 +10,14 @@ export default function RecipeCard(props) {
     <div className="recipe-card">
       <div className="recipe-content-description">
         <h3 className="recipe-name">{recipe.name}</h3>
-        <p className="recipe-description">
-          Descrição rápida a respeito da receita
-        </p>
+        <p className="recipe-description">{recipe.description}</p>
       </div>
       <div className="gradient-opacity" />
       <Link to={`/recipes/${recipe.id}`} className="recipe-link">
         Veja a receira completa!
       </Link>
       <img
-        src="https://i0.statig.com.br/bancodeimagens/cs/1t/wm/cs1twm81owp8iug586w3t6pjl.jpg"
+        src={recipe.image}
         alt="imagem da receita"
         className="recipe-background"
       />
