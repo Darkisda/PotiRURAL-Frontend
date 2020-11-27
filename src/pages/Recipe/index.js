@@ -28,23 +28,25 @@ export default function Recipe(props) {
           <Row className="custom-row">
             <div className="recipe-header">
               <h1 className="recipe-title">{recipe.name}</h1>
-              <p className="recipe-description">Descrição breve da receita</p>
-              <div className="img-wrapper">
-                <img
-                  src="https://i0.statig.com.br/bancodeimagens/cs/1t/wm/cs1twm81owp8iug586w3t6pjl.jpg"
-                  alt="imagem-da-receita"
-                  className="recipe-image"
-                />
-              </div>
+              <p className="recipe-description">{recipe.description}</p>
             </div>
           </Row>
+          <hr />
           <Row className="custom-row">
             <h3 className="recipes-subtitle-page">Ingredientes:</h3>
-            <p>{recipe.ingredients}</p>
+            <p>
+              {recipe.ingredients !== undefined
+                ? recipe.ingredients.split(/\n|\n\n/)
+                : ''}
+            </p>
           </Row>
           <Row className="custom-row">
             <h3 className="recipes-subtitle-page">Modo de Preparo:</h3>
-            <p>{recipe.preparation}</p>
+            <p>
+              {recipe.preparation !== undefined
+                ? recipe.preparation.split(/\n|\n\n/)
+                : ''}
+            </p>
           </Row>
         </>
       ) : (

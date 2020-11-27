@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Pagination, Spinner } from 'react-bootstrap';
+import { Container, Row, Col, Pagination, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import api from '../../server/api';
 import UserHeader from '../../components/UserHeader';
@@ -62,11 +62,20 @@ export default function RecipesPage() {
             <Pagination.Last onClick={() => setPage(totalPages)} />
           </Pagination>
         </Row>
-        {recipes.map((recipe) => (
-          <Row key={recipe.id} className="custom-row">
-            <RecipeCard recipe={recipe} />
-          </Row>
-        ))}
+        <Row>
+          {recipes.map((recipe) => (
+            <Col
+              key={recipe.id}
+              lg={4}
+              sm={12}
+              xs={12}
+              md={4}
+              className="custom-col"
+            >
+              <RecipeCard recipe={recipe} />
+            </Col>
+          ))}
+        </Row>
       </>
     ) : (
       <Row className="custom-row empty-row">

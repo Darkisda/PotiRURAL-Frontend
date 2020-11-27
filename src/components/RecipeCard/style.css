@@ -1,76 +1,54 @@
-.recipe-card {
-  margin-top: 2rem;
-  margin-bottom: 5rem;
-  height: 15rem;
-  width: 98%;
-  border-radius: 8px;
+.recipe-card .modal-content {
+  max-width: 20rem;
+  min-width: 20rem;
+  max-height: 20rem;
+  min-height: 17.9rem;
+  height: 100%;
+  width: 100%;
   display: flex;
-  position: relative;
-  overflow: hidden;
-
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  text-align: justify;
+  font-size: 1.2rem;
 }
 
-.recipe-content-description,
-.recipe-link {
-  padding: 15px 15px;
-  position: absolute;
+.recipe-card .modal-body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  overflow: hidden; 
 }
 
-.recipe-content-description {
-  z-index: 3;
+.recipe-card .modal-body p {
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
-.gradient-opacity {
-  position: absolute;
+.recipe-card .modal-footer {
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.recipe-card .modal-footer .btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to right, rgba(255,255,255, 1.0), rgba(255,255,255, 0.1));
-  z-index: 2;
-}
-
-.recipe-background {
-  width: 100%;
-  height: 150%;
-  z-index: 1;
-  animation-name: move;
-  animation-duration: 5s;
-  animation-iteration-count: infinite;
-  animation-direction: alternate-reverse;
-  animation-timing-function: linear;
-}
-
-.recipe-link{
-  bottom: 0;
-  right: 0;
-  font-weight: 600;
+  background: #03A9F4;
   color: #fff;
-  font-size: 1.2rem;
-  text-shadow: -1px 1px 2px rgba(0,0,0, 0.5);
-  z-index: 3;
-}
-
-.recipe-link:hover {
-  color: #FFE;
-  text-decoration: none;
-}
-
-.recipe-name {
   font-weight: 600;
-  font-size: 2.5rem;
-  color: #212121;
-}
-
-.recipe-description {
-  color: #212121;
   font-size: 1.2rem;
+  transform: background-color 0.8s;
 }
 
-@keyframes move {
-  from {
-    transform: translateY(-15%);
-  }
-
-  to {
-    transform: translateY(0);
-  }
+.recipe-card .modal-footer .btn:hover {
+  background-color: #0288D1
 }

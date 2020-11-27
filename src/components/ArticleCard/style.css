@@ -8,6 +8,7 @@
   flex-direction: column;
   justify-content: center;
   text-align: justify;
+  font-size: 1.2rem;
 }
 
 .article-card .modal-body {

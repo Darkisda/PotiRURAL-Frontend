@@ -15,7 +15,6 @@ export default function CreateRecipe() {
   const [description, setDescription] = useState('');
   const [ingredients, setIngredients] = useState('');
   const [preparation, setPreparation] = useState('');
-  const [image, setImage] = useState({});
 
   const { authenticate } = useContext(Context);
   const history = useHistory();
@@ -31,7 +30,6 @@ export default function CreateRecipe() {
       description,
       ingredients,
       preparation,
-      image,
     });
 
     return response;
@@ -113,24 +111,6 @@ export default function CreateRecipe() {
                   required
                   onChange={(e) => {
                     setPreparation(e.target.value);
-                  }}
-                />
-              </Form.Group>
-            </Form.Row>
-            <Form.Row className="custom-row-form">
-              <Form.Group as={Col} controlId="recipe-img">
-                <Form.Label className="custom-label">
-                  Uma foto da receita.
-                </Form.Label>
-                <Form.File
-                  name="image"
-                  // ref={register}
-                  type="file"
-                  id="image-recipe-form"
-                  label="Escolha uma imagem"
-                  custom
-                  onChange={(e) => {
-                    setImage(e.target.files[0]);
                   }}
                 />
               </Form.Group>

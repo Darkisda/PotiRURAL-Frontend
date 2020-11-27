@@ -1,6 +1,6 @@
 .recipe-header {
   margin-top: 3rem;
-  height: 25rem;
+  height: auto;
   width: 100%;
   color: #212121;
   display: flex;
