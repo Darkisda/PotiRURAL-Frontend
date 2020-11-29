@@ -4,8 +4,14 @@ import { Container, Row, Form, Col, Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import UserHeader from '../../components/UserHeader';
 import { Context } from '../../auth/AuthContext';
+import Product from '../../models/Product';
 
 export default function CreateBarraca() {
+  const [productName, setProductName] = useState('');
+  const [price, setPrice] = useState(0);
+  const [meansurement, setMeansurement] = useState('');
+  const [products, setProducts] = useState([]);
+
   const [ufs, setUfs] = useState([]);
   const [cities, setCities] = useState([]);
   const [selectedUf, setSelectedUf] = useState('0');
@@ -63,6 +69,20 @@ export default function CreateBarraca() {
     setSelectedCity(city);
   }
 
+  function handleCreateProduct(e) {
+    e.preventDefault();
+
+    const prodct = new Product();
+
+    prodct.setProductName(productName);
+    prodct.setPrice(price);
+    prodct.setMeansurement(meansurement);
+
+    setProducts([...products, prodct]);
+
+    console.log(products);
+  }
+
   function handleAlertAndRedirect() {
     alert('Você precisa está cadastrado para escrever um novo artigo');
     history.push('/signup');
@@ -106,19 +126,39 @@ export default function CreateBarraca() {
                 <Form.Label className="custom-label">
                   Nome do produto.
                 </Form.Label>
-                <Form.Control type="text" required />
+                <Form.Control
+                  type="text"
+                  required
+                  onChange={(e) => {
+                    setProductName(e.target.value);
+                  }}
+                />
               </Form.Group>
               <Form.Group as={Col} controlId="barraca-product-price">
                 <Form.Label className="custom-label">
                   Preço do produto.
                 </Form.Label>
-                <Form.Control type="number" step=".01" required />
+                <Form.Control
+                  type="number"
+                  step=".01"
+                  required
+                  onChange={(e) => {
+                    setPrice(e.target.value);
+                  }}
+                />
               </Form.Group>
               <Form.Group as={Col} controlId="barraca-product-meansurement">
                 <Form.Label className="custom-label">
                   Unidade de Medida.
                 </Form.Label>
-                <Form.Control as="select" defaultValue="DEFAULT" required>
+                <Form.Control
+                  as="select"
+                  defaultValue="DEFAULT"
+                  required
+                  onChange={(e) => {
+                    setMeansurement(e.target.value);
+                  }}
+                >
                   <option value="DEFAULT" disabled hidden>
                     Selecione uma medida.
                   </option>
@@ -131,7 +171,11 @@ export default function CreateBarraca() {
               </Form.Group>
             </Form.Row>
             <Form.Row className="custom-row-form-button">
-              <Button className="product-button" type="button">
+              <Button
+                className="product-button"
+                type="button"
+                onClick={handleCreateProduct}
+              >
                 Adicionar produto.
               </Button>
             </Form.Row>
