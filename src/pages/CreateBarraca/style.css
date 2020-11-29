@@ -1,0 +1,12 @@
+.product-button {
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  background-color: #43A047;
+  border: none;
+  font-size: 1.2rem;
+  transform: background-color 0.8s;
+}
+
+.product-button:hover {
+  background-color: #388E3C;
+}

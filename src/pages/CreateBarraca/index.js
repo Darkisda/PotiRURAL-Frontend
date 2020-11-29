@@ -5,8 +5,14 @@ import { useHistory } from 'react-router-dom';
 import UserHeader from '../../components/UserHeader';
 import { Context } from '../../auth/AuthContext';
 import Product from '../../models/Product';
+import api from '../../server/api';
+
+import './style.css';
 
 export default function CreateBarraca() {
+  const [barracaName, setBarracaName] = useState('');
+  const [description, setDescription] = useState('');
+
   const [productName, setProductName] = useState('');
   const [price, setPrice] = useState(0);
   const [meansurement, setMeansurement] = useState('');
@@ -31,43 +37,47 @@ export default function CreateBarraca() {
     },
   ];
 
-  useEffect(() => {
+  async function fetchUFs() {
+    const abortController = new AbortController();
+    const { signal } = abortController;
+
     axios
-      .get('https://servicodados.ibge.gov.br/api/v1/localidades/estados')
+      .get('https://servicodados.ibge.gov.br/api/v1/localidades/estados', {
+        signal,
+      })
       .then((response) => {
         setUfs(response.data);
       });
-  }, []);
+
+    abortController.abort();
+  }
 
   useEffect(() => {
+    fetchUFs();
+  }, []);
+
+  async function fetchCities() {
+    const abortController = new AbortController();
+    const { signal } = abortController;
+
     if (selectedUf === '0') {
       return;
     }
-
     axios
       .get(
-        `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${selectedUf}/municipios`
+        `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${selectedUf}/municipios`,
+        { signal }
       )
       .then((response) => {
         setCities(response.data);
       });
+
+    abortController.abort();
+  }
+
+  useEffect(() => {
+    fetchCities();
   }, [selectedUf]);
-
-  function handleSelectUF(e) {
-    e.preventDefault();
-
-    const uf = e.target.value;
-
-    setSelectedUf(uf);
-  }
-
-  function handleSelectCity(e) {
-    e.preventDefault();
-
-    const city = e.target.value;
-
-    setSelectedCity(city);
-  }
 
   function handleCreateProduct(e) {
     e.preventDefault();
@@ -83,6 +93,35 @@ export default function CreateBarraca() {
     console.log(products);
   }
 
+  function handleSucess() {
+    alert('Cadastro realizado com sucesso!');
+    history.push('/market');
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    const city = selectedCity;
+    const state = selectedUf;
+
+    await api
+      .post('market', {
+        barracaName,
+        description,
+        city,
+        state,
+        products,
+      })
+      .then((response) => {
+        if (response.status === 201) {
+          handleSucess();
+        } else {
+          alert('Oops algo deu errado');
+          history.push('/');
+        }
+      });
+  }
+
   function handleAlertAndRedirect() {
     alert('Você precisa está cadastrado para escrever um novo artigo');
     history.push('/signup');
@@ -96,13 +135,19 @@ export default function CreateBarraca() {
           <Row className="form-header">
             <h1 className="title">Crie uma nova Barraca para seus produtos!</h1>
           </Row>
-          <Form className="form-create-barraca">
+          <Form className="form-create-barraca" onSubmit={handleSubmit}>
             <Form.Row className="custom-row-form">
               <Form.Group as={Col} controlId="barraca-name">
                 <Form.Label className="custom-label">
                   Nome da Barraca.
                 </Form.Label>
-                <Form.Control type="text" required />
+                <Form.Control
+                  type="text"
+                  required
+                  onChange={(e) => {
+                    setBarracaName(e.target.value);
+                  }}
+                />
               </Form.Group>
             </Form.Row>
             <Form.Row className="custom-row-form">
@@ -114,6 +159,9 @@ export default function CreateBarraca() {
                   as="textarea"
                   rows={2}
                   className="custom-textarea"
+                  onChange={(e) => {
+                    setDescription(e.target.value);
+                  }}
                   required
                 />
               </Form.Group>
@@ -186,10 +234,11 @@ export default function CreateBarraca() {
                 </Form.Label>
                 <Form.Control
                   as="select"
-                  defaultValue="0"
                   value={selectedUf}
                   required
-                  onChange={handleSelectUF}
+                  onChange={(e) => {
+                    setSelectedUf(e.target.value);
+                  }}
                 >
                   <option value="0" disabled hidden>
                     Selecione um Estado.
@@ -207,10 +256,11 @@ export default function CreateBarraca() {
                 </Form.Label>
                 <Form.Control
                   as="select"
-                  defaultValue="0"
                   value={selectedCity}
                   required
-                  onChange={handleSelectCity}
+                  onChange={(e) => {
+                    setSelectedCity(e.target.value);
+                  }}
                 >
                   <option value="0" disabled hidden>
                     Selecione uma Cidade.
@@ -222,6 +272,11 @@ export default function CreateBarraca() {
                   ))}
                 </Form.Control>
               </Form.Group>
+            </Form.Row>
+            <Form.Row className="custom-row-form-button">
+              <Button className="signup-button" type="submit">
+                Cadastrar
+              </Button>
             </Form.Row>
           </Form>
         </>
