@@ -48,7 +48,7 @@ export default function Recipe(props) {
           </Row>
           {recipe.preparation !== undefined
             ? recipe.preparation.split(/\n|\n\n/).map((paragraph, idx) => (
-                <Row className="custom-row" key={idx}>
+                <Row className="row-recipe" key={idx}>
                   {paragraph}
                 </Row>
               ))
