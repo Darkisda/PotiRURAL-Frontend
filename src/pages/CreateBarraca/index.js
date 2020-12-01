@@ -1,10 +1,9 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Container, Row, Form, Col, Button } from 'react-bootstrap';
 import { FiCheckCircle } from 'react-icons/fi';
 import { useHistory } from 'react-router-dom';
 import UserHeader from '../../components/UserHeader';
-import { Context } from '../../auth/AuthContext';
 import Product from '../../models/Product';
 import api from '../../server/api';
 
@@ -26,7 +25,6 @@ export default function CreateBarraca() {
 
   const [sucess, setSucess] = useState(false);
 
-  const { authenticate } = useContext(Context);
   const history = useHistory();
 
   const meansurements = [
@@ -100,8 +98,6 @@ export default function CreateBarraca() {
     setPrice(0);
     setMeansurement('');
     setSucess(true);
-
-    console.log(products);
   }
 
   function handleSucess() {
@@ -132,174 +128,153 @@ export default function CreateBarraca() {
         }
       });
   }
-
-  function handleAlertAndRedirect() {
-    alert('Você precisa está cadastrado para escrever um novo artigo');
-    history.push('/signup');
-  }
-
   return (
     <Container className="custom-container">
       <UserHeader />
-      {authenticate ? (
-        <>
-          <Row className="form-header">
-            <h1 className="title">Crie uma nova Barraca para seus produtos!</h1>
-          </Row>
-          <Form className="form-create-barraca" onSubmit={handleSubmit}>
-            <Form.Row className="custom-row-form">
-              <Form.Group as={Col} controlId="barraca-name">
-                <Form.Label className="custom-label">
-                  Nome da Barraca.
-                </Form.Label>
-                <Form.Control
-                  type="text"
-                  required
-                  onChange={(e) => {
-                    setBarracaName(e.target.value);
-                  }}
-                />
-              </Form.Group>
-            </Form.Row>
-            <Form.Row className="custom-row-form">
-              <Form.Group as={Col} controlId="barraca-description">
-                <Form.Label className="custom-label">
-                  Uma breve descrição da sua barraca.
-                </Form.Label>
-                <Form.Control
-                  as="textarea"
-                  rows={2}
-                  className="custom-textarea"
-                  onChange={(e) => {
-                    setDescription(e.target.value);
-                  }}
-                  required
-                />
-              </Form.Group>
-            </Form.Row>
-            <Form.Row className="custom-row-form">
-              <h1>Produtos</h1>
-              <p className={sucess ? 'sucess' : 'none'}>
-                <FiCheckCircle /> Produto cadastrado com sucesso!
-              </p>
-            </Form.Row>
-            <Form.Row className="custom-row-form">
-              <Form.Group as={Col} controlId="barraca-product-name">
-                <Form.Label className="custom-label">
-                  Nome do produto.
-                </Form.Label>
-                <Form.Control
-                  type="text"
-                  required
-                  value={productName}
-                  onChange={(e) => {
-                    setProductName(e.target.value);
-                  }}
-                />
-              </Form.Group>
-              <Form.Group as={Col} controlId="barraca-product-price">
-                <Form.Label className="custom-label">
-                  Preço do produto.
-                </Form.Label>
-                <Form.Control
-                  type="number"
-                  step=".01"
-                  value={price}
-                  required
-                  onChange={(e) => {
-                    setPrice(e.target.value);
-                  }}
-                />
-              </Form.Group>
-              <Form.Group as={Col} controlId="barraca-product-meansurement">
-                <Form.Label className="custom-label">
-                  Unidade de Medida.
-                </Form.Label>
-                <Form.Control
-                  value={meansurement}
-                  as="select"
-                  defaultValue="DEFAULT"
-                  required
-                  onChange={(e) => {
-                    setMeansurement(e.target.value);
-                  }}
-                >
-                  <option value="DEFAULT" disabled hidden>
-                    Selecione uma medida.
-                  </option>
-                  {meansurements.map((means) => (
-                    <option key={means.value} value={means.value}>
-                      {means.label}
-                    </option>
-                  ))}
-                </Form.Control>
-              </Form.Group>
-            </Form.Row>
-            <Form.Row className="custom-row-form-button">
-              <Button
-                className="product-button"
-                type="button"
-                onClick={handleCreateProduct}
-              >
-                Adicionar produto.
-              </Button>
-            </Form.Row>
-            <Form.Row className="custom-row-form">
-              <Form.Group as={Col} controlId="barraca-uf">
-                <Form.Label className="custom-label">
-                  Estado onde se encontrará a barraca.
-                </Form.Label>
-                <Form.Control
-                  as="select"
-                  value={selectedUf}
-                  required
-                  onChange={(e) => {
-                    setSelectedUf(e.target.value);
-                  }}
-                >
-                  <option value="0" disabled hidden>
-                    Selecione um Estado.
-                  </option>
-                  {ufs.map((uf) => (
-                    <option value={uf.sigla} key={uf.id}>
-                      {uf.sigla}
-                    </option>
-                  ))}
-                </Form.Control>
-              </Form.Group>
-              <Form.Group as={Col} controlId="barraca-city">
-                <Form.Label className="custom-label">
-                  Cidade onde se encontrará a barraca.
-                </Form.Label>
-                <Form.Control
-                  as="select"
-                  value={selectedCity}
-                  required
-                  onChange={(e) => {
-                    setSelectedCity(e.target.value);
-                  }}
-                >
-                  <option value="0" disabled hidden>
-                    Selecione uma Cidade.
-                  </option>
-                  {cities.map((city) => (
-                    <option key={city.id} value={city.nome}>
-                      {city.nome}
-                    </option>
-                  ))}
-                </Form.Control>
-              </Form.Group>
-            </Form.Row>
-            <Form.Row className="custom-row-form-button">
-              <Button className="signup-button" type="submit">
-                Cadastrar
-              </Button>
-            </Form.Row>
-          </Form>
-        </>
-      ) : (
-        handleAlertAndRedirect()
-      )}
+      <Row className="form-header">
+        <h1 className="title">Crie uma nova Barraca para seus produtos!</h1>
+      </Row>
+      <Form className="form-create-barraca" onSubmit={handleSubmit}>
+        <Form.Row className="custom-row-form">
+          <Form.Group as={Col} controlId="barraca-name">
+            <Form.Label className="custom-label">Nome da Barraca.</Form.Label>
+            <Form.Control
+              type="text"
+              required
+              onChange={(e) => {
+                setBarracaName(e.target.value);
+              }}
+            />
+          </Form.Group>
+        </Form.Row>
+        <Form.Row className="custom-row-form">
+          <Form.Group as={Col} controlId="barraca-description">
+            <Form.Label className="custom-label">
+              Uma breve descrição da sua barraca.
+            </Form.Label>
+            <Form.Control
+              as="textarea"
+              rows={2}
+              className="custom-textarea"
+              onChange={(e) => {
+                setDescription(e.target.value);
+              }}
+              required
+            />
+          </Form.Group>
+        </Form.Row>
+        <Form.Row className="custom-row-form">
+          <h1>Produtos</h1>
+          <p className={sucess ? 'sucess' : 'none'}>
+            <FiCheckCircle /> Produto cadastrado com sucesso!
+          </p>
+        </Form.Row>
+        <Form.Row className="custom-row-form">
+          <Form.Group as={Col} controlId="barraca-product-name">
+            <Form.Label className="custom-label">Nome do produto.</Form.Label>
+            <Form.Control
+              type="text"
+              required
+              value={productName}
+              onChange={(e) => {
+                setProductName(e.target.value);
+              }}
+            />
+          </Form.Group>
+          <Form.Group as={Col} controlId="barraca-product-price">
+            <Form.Label className="custom-label">Preço do produto.</Form.Label>
+            <Form.Control
+              type="number"
+              step=".01"
+              value={price}
+              required
+              onChange={(e) => {
+                setPrice(e.target.value);
+              }}
+            />
+          </Form.Group>
+          <Form.Group as={Col} controlId="barraca-product-meansurement">
+            <Form.Label className="custom-label">Unidade de Medida.</Form.Label>
+            <Form.Control
+              value={meansurement}
+              as="select"
+              required
+              onChange={(e) => {
+                setMeansurement(e.target.value);
+              }}
+            >
+              <option value="DEFAULT" disabled hidden>
+                Selecione uma medida.
+              </option>
+              {meansurements.map((means) => (
+                <option key={means.value} value={means.value}>
+                  {means.label}
+                </option>
+              ))}
+            </Form.Control>
+          </Form.Group>
+        </Form.Row>
+        <Form.Row className="custom-row-form-button">
+          <Button
+            className="product-button"
+            type="button"
+            onClick={handleCreateProduct}
+          >
+            Adicionar produto.
+          </Button>
+        </Form.Row>
+        <Form.Row className="custom-row-form">
+          <Form.Group as={Col} controlId="barraca-uf">
+            <Form.Label className="custom-label">
+              Estado onde se encontrará a barraca.
+            </Form.Label>
+            <Form.Control
+              as="select"
+              value={selectedUf}
+              required
+              onChange={(e) => {
+                setSelectedUf(e.target.value);
+              }}
+            >
+              <option value="0" disabled hidden>
+                Selecione um Estado.
+              </option>
+              {ufs.map((uf) => (
+                <option value={uf.sigla} key={uf.id}>
+                  {uf.sigla}
+                </option>
+              ))}
+            </Form.Control>
+          </Form.Group>
+          <Form.Group as={Col} controlId="barraca-city">
+            <Form.Label className="custom-label">
+              Cidade onde se encontrará a barraca.
+            </Form.Label>
+            <Form.Control
+              as="select"
+              value={selectedCity}
+              required
+              onChange={(e) => {
+                setSelectedCity(e.target.value);
+              }}
+            >
+              <option value="0" disabled hidden>
+                Selecione uma Cidade.
+              </option>
+              {cities.map((city) => (
+                <option key={city.id} value={city.nome}>
+                  {city.nome}
+                </option>
+              ))}
+            </Form.Control>
+          </Form.Group>
+        </Form.Row>
+        <Form.Row className="custom-row-form-button">
+          <Button className="signup-button" type="submit">
+            Cadastrar
+          </Button>
+        </Form.Row>
+      </Form>
     </Container>
   );
 }
