@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import { Container, Row, Form, Col, Button } from 'react-bootstrap';
+import { FiCheckCircle } from 'react-icons/fi';
 import { useHistory } from 'react-router-dom';
 import UserHeader from '../../components/UserHeader';
 import { Context } from '../../auth/AuthContext';
@@ -22,6 +23,8 @@ export default function CreateBarraca() {
   const [cities, setCities] = useState([]);
   const [selectedUf, setSelectedUf] = useState('0');
   const [selectedCity, setSelectedCity] = useState('0');
+
+  const [sucess, setSucess] = useState(false);
 
   const { authenticate } = useContext(Context);
   const history = useHistory();
@@ -82,6 +85,9 @@ export default function CreateBarraca() {
   function handleCreateProduct(e) {
     e.preventDefault();
 
+    if (productName === '' || price === 0 || meansurement === '') {
+      return;
+    }
     const prodct = new Product();
 
     prodct.setProductName(productName);
@@ -89,6 +95,11 @@ export default function CreateBarraca() {
     prodct.setMeansurement(meansurement);
 
     setProducts([...products, prodct]);
+
+    setProductName('');
+    setPrice(0);
+    setMeansurement('');
+    setSucess(true);
 
     console.log(products);
   }
@@ -168,6 +179,9 @@ export default function CreateBarraca() {
             </Form.Row>
             <Form.Row className="custom-row-form">
               <h1>Produtos</h1>
+              <p className={sucess ? 'sucess' : 'none'}>
+                <FiCheckCircle /> Produto cadastrado com sucesso!
+              </p>
             </Form.Row>
             <Form.Row className="custom-row-form">
               <Form.Group as={Col} controlId="barraca-product-name">
@@ -177,6 +191,7 @@ export default function CreateBarraca() {
                 <Form.Control
                   type="text"
                   required
+                  value={productName}
                   onChange={(e) => {
                     setProductName(e.target.value);
                   }}
@@ -189,6 +204,7 @@ export default function CreateBarraca() {
                 <Form.Control
                   type="number"
                   step=".01"
+                  value={price}
                   required
                   onChange={(e) => {
                     setPrice(e.target.value);
@@ -200,6 +216,7 @@ export default function CreateBarraca() {
                   Unidade de Medida.
                 </Form.Label>
                 <Form.Control
+                  value={meansurement}
                   as="select"
                   defaultValue="DEFAULT"
                   required

@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import React, { createContext, useState, useEffect } from 'react';
 import jwt from 'jwt-decode';
 
@@ -10,11 +11,24 @@ function AuthProvider({ children }) {
   const [loaded, setLoaded] = useState(false);
   const [userLogged, setUserLogged] = useState({});
 
+  function handleLogout() {
+    localStorage.removeItem('accessToken');
+    api.defaults.headers.Authorization = undefined;
+    setAuthenticate(false);
+  }
+
   function getUserFromJWT() {
     const token = localStorage.getItem('accessToken');
 
     if (token) {
-      const { user } = jwt(token);
+      const { user, exp } = jwt(token);
+
+      const now = new Date();
+
+      if (now.getTime() > exp) {
+        handleLogout();
+        return null;
+      }
 
       setUserLogged(user);
     }
@@ -45,12 +59,6 @@ function AuthProvider({ children }) {
     setAuthenticate(true);
     getUserFromJWT();
     setLoaded(true);
-  }
-
-  function handleLogout() {
-    localStorage.removeItem('accessToken');
-    api.defaults.headers.Authorization = undefined;
-    setAuthenticate(false);
   }
 
   if (!loaded) {

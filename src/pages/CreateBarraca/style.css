@@ -10,3 +10,13 @@
 .product-button:hover {
   background-color: #388E3C;
 }
+
+.sucess {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #43A047;
+}
+
+.none {
+  display: none;
+}
