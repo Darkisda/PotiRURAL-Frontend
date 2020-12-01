@@ -23,9 +23,11 @@
 }
 
 .login-form {
-  margin-top: 8rem;
-  height: 30rem;
-  width: 20rem;
+  margin-top: 5rem;
+  height: 35rem;
+  max-height: max-content;
+  width: 25rem;
+  max-width: 97%;
   border-radius: 8px;
   border: 0.3rem solid #43A047;
   display: flex;

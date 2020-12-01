@@ -25,7 +25,7 @@ function AuthProvider({ children }) {
 
       const now = new Date();
 
-      if (now.getTime() > exp) {
+      if (now.getSeconds() > exp) {
         handleLogout();
         return null;
       }
@@ -47,22 +47,20 @@ function AuthProvider({ children }) {
   }, []);
 
   async function handleLogin(email, password) {
-    const {
-      data: { accessToken },
-    } = await api.post('auth/signin', {
+    const { data } = await api.post('auth/signin', {
       email,
       password,
     });
 
-    localStorage.setItem('accessToken', JSON.stringify(accessToken));
-    api.defaults.headers.Authorization = `Bearer ${accessToken}`;
-    setAuthenticate(true);
-    getUserFromJWT();
-    setLoaded(true);
-  }
-
-  if (!loaded) {
-    <h1>Loading...</h1>;
+    if (data.accessToken) {
+      localStorage.setItem('accessToken', JSON.stringify(data.accessToken));
+      api.defaults.headers.Authorization = `Bearer ${data.DateaccessToken}`;
+      setAuthenticate(true);
+      getUserFromJWT();
+      setLoaded(true);
+    } else {
+      return data;
+    }
   }
 
   return (

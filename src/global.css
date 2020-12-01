@@ -162,6 +162,41 @@ hr {
   border-top: 0.15rem solid #BDBDBD;
 }
 
+
+.custom-row-form {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.custom-row-form-button {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #212121;
+  letter-spacing: -1px;
+}
+
+.error {
+  text-align: right;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #f4511e;
+}
+
+.credentials {
+  text-align: center;
+}
+
 @media (max-width: 576px) {
   .container-custom {
     padding: auto;
