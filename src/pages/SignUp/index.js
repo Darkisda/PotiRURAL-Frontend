@@ -9,6 +9,7 @@ export default function SignUp() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
+  const [emailErr, setEmailErr] = useState('');
   const [password, setPassword] = useState('');
   const [occupation, setOccupation] = useState('');
   const [whatsapp, setWhatsapp] = useState('');
@@ -52,14 +53,18 @@ export default function SignUp() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    handleSignUp().then((response) => {
-      if (response.status === 201) {
-        handleSucess();
-      } else {
-        alert('Oops algo deu errado');
-        history.push('/signup');
-      }
-    });
+    setEmailErr('');
+    handleSignUp()
+      .then((response) => {
+        if (response.status === 201) {
+          handleSucess();
+        }
+      })
+      .catch((error) => {
+        if (error.response.data.statusCode === 409) {
+          setEmailErr(error.response.data.message);
+        }
+      });
   }
 
   return (
@@ -79,6 +84,8 @@ export default function SignUp() {
             <Form.Control
               type="text"
               required
+              pattern="[A-Za-z].{3,25}"
+              title="O primeiro nome está curto demais"
               onChange={(e) => {
                 setFirstName(e.target.value);
               }}
@@ -89,13 +96,15 @@ export default function SignUp() {
             <Form.Control
               type="text"
               required
+              pattern="[A-Za-z].{3,90}"
+              title="O sobrenome está curto demais"
               onChange={(e) => {
                 setLastName(e.target.value);
               }}
             />
           </Form.Group>
         </Form.Row>
-        <Form.Row className="custom-row-form">
+        <Form.Row className="email-custom-row-form">
           <Form.Group as={Col} controlId="signup-email">
             <Form.Label className="custom-label"> Email: </Form.Label>
             <Form.Control
@@ -106,6 +115,7 @@ export default function SignUp() {
               }}
             />
           </Form.Group>
+          {emailErr ? <p className="error">{emailErr}</p> : ''}
         </Form.Row>
         <Form.Row className="custom-row-form">
           <Form.Group as={Col} controlId="signup-password">
@@ -120,8 +130,8 @@ export default function SignUp() {
               }}
             />
             <p>
-              A senha deve conter: 1 Letra Maiúscula, 1 Letra Minúscula e 1
-              Número
+              A senha deve conter: 1 Letra Maiúscula, 1 Letra Minúscula, 1
+              Número e 4 Caracteres
             </p>
           </Form.Group>
         </Form.Row>

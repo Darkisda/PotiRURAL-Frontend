@@ -43,6 +43,10 @@
   color: #43A047;
 }
 
+.form-group {
+  width: 100%;
+}
+
 .form-control {
   border: 0.2rem solid #43A047;
   border-radius: 8px;
