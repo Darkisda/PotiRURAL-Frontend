@@ -63,6 +63,8 @@ export default function SignUp() {
       .catch((error) => {
         if (error.response.data.statusCode === 409) {
           setEmailErr(error.response.data.message);
+        } else if (error.response.data.statusCode === 400) {
+          setEmailErr(error.response.data.message);
         }
       });
   }

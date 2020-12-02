@@ -88,6 +88,8 @@ export default function CreateBarraca() {
     }
     const prodct = new Product();
 
+    console.log(price);
+
     prodct.setProductName(productName);
     prodct.setPrice(price);
     prodct.setMeansurement(meansurement);
@@ -96,7 +98,7 @@ export default function CreateBarraca() {
 
     setProductName('');
     setPrice(0);
-    setMeansurement('');
+    setMeansurement('Selecione uma medida.');
     setSucess(true);
   }
 
@@ -196,7 +198,7 @@ export default function CreateBarraca() {
           <Form.Group as={Col} controlId="barraca-product-meansurement">
             <Form.Label className="custom-label">Unidade de Medida.</Form.Label>
             <Form.Control
-              value={meansurement}
+              defaultValue="DEFAULT"
               as="select"
               required
               onChange={(e) => {

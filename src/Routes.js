@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Spinner, Row } from 'react-bootstrap';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
@@ -15,7 +16,18 @@ import BarracaPage from './pages/BarracaPage';
 import { Context } from './auth/AuthContext';
 
 function PrivateRoute({ isPrivate, ...rest }) {
-  const { authenticate } = useContext(Context);
+  const { authenticate, loaded } = useContext(Context);
+
+  if (!loaded) {
+    return (
+      <Row className="custom-row">
+        <div className="loading">
+          <Spinner animation="border" />
+          <h1>Loading...</h1>
+        </div>
+      </Row>
+    );
+  }
 
   if (isPrivate && !authenticate) {
     alert('Você precisa está cadastrado para poder criar algo.');
@@ -29,33 +41,33 @@ export default function Routes() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/" exact component={MainWrapper} />
-        <Route path="/signin" exact component={SignIn} />
-        <Route path="/signup" exact component={SignUp} />
-        <Route path="/recipes" exact component={RecipesPage} />
+        <PrivateRoute path="/" exact component={MainWrapper} />
+        <PrivateRoute path="/signin" exact component={SignIn} />
+        <PrivateRoute path="/signup" exact component={SignUp} />
+        <PrivateRoute path="/recipes" exact component={RecipesPage} />
         <PrivateRoute
           isPrivate
           path="/recipes/create"
           exact
           component={CreateRecipe}
         />
-        <Route path="/recipes/:id" exact component={Recipe} />
-        <Route path="/articles" exact component={ArticlesPage} />
+        <PrivateRoute path="/recipes/:id" exact component={Recipe} />
+        <PrivateRoute path="/articles" exact component={ArticlesPage} />
         <PrivateRoute
           isPrivate
           path="/articles/create"
           exact
           component={CreateArticle}
         />
-        <Route path="/articles/:id" exact component={Article} />
-        <Route path="/market" exact component={Market} />
+        <PrivateRoute path="/articles/:id" exact component={Article} />
+        <PrivateRoute path="/market" exact component={Market} />
         <PrivateRoute
           isPrivate
           path="/market/create"
           exact
           component={CreateBarraca}
         />
-        <Route path="/market/:id" exact component={BarracaPage} />
+        <PrivateRoute path="/market/:id" exact component={BarracaPage} />
       </Switch>
     </BrowserRouter>
   );
