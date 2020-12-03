@@ -25,7 +25,7 @@ function AuthProvider({ children }) {
 
       const now = new Date();
 
-      if (now.getSeconds() > exp) {
+      if (Math.trunc(now.getTime() / 1000) > exp) {
         handleLogout();
         return null;
       }

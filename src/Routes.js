@@ -13,6 +13,7 @@ import CreateBarraca from './pages/CreateBarraca';
 import CreateArticle from './pages/CreateArticle';
 import CreateRecipe from './pages/CreateRecipe';
 import BarracaPage from './pages/BarracaPage';
+import EventsPage from './pages/EventsPage';
 import { Context } from './auth/AuthContext';
 
 function PrivateRoute({ isPrivate, ...rest }) {
@@ -68,6 +69,7 @@ export default function Routes() {
           component={CreateBarraca}
         />
         <PrivateRoute path="/market/:id" exact component={BarracaPage} />
+        <PrivateRoute path="/events" exact component={EventsPage} />
       </Switch>
     </BrowserRouter>
   );

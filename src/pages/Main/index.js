@@ -48,7 +48,9 @@ export default function Main() {
         </Col>
         <Col lg={4} sm={4} xs={12} className="custom-col-main mobile">
           <h3>Próximos eventos</h3>
-          <div className="section-main" />
+          <Link to="/events" className="section-main">
+            <div />
+          </Link>
         </Col>
       </Row>
     </Container>
