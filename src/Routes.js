@@ -16,7 +16,7 @@ import BarracaPage from './pages/BarracaPage';
 import EventsPage from './pages/EventsPage';
 import { Context } from './auth/AuthContext';
 
-function PrivateRoute({ isPrivate, ...rest }) {
+function CustomRoute({ isPrivate, ...rest }) {
   const { authenticate, loaded } = useContext(Context);
 
   if (!loaded) {
@@ -42,34 +42,34 @@ export default function Routes() {
   return (
     <BrowserRouter>
       <Switch>
-        <PrivateRoute path="/" exact component={MainWrapper} />
-        <PrivateRoute path="/signin" exact component={SignIn} />
-        <PrivateRoute path="/signup" exact component={SignUp} />
-        <PrivateRoute path="/recipes" exact component={RecipesPage} />
-        <PrivateRoute
+        <CustomRoute path="/" exact component={MainWrapper} />
+        <CustomRoute path="/signin" exact component={SignIn} />
+        <CustomRoute path="/signup" exact component={SignUp} />
+        <CustomRoute path="/recipes" exact component={RecipesPage} />
+        <CustomRoute
           isPrivate
           path="/recipes/create"
           exact
           component={CreateRecipe}
         />
-        <PrivateRoute path="/recipes/:id" exact component={Recipe} />
-        <PrivateRoute path="/articles" exact component={ArticlesPage} />
-        <PrivateRoute
+        <CustomRoute path="/recipes/:id" exact component={Recipe} />
+        <CustomRoute path="/articles" exact component={ArticlesPage} />
+        <CustomRoute
           isPrivate
           path="/articles/create"
           exact
           component={CreateArticle}
         />
-        <PrivateRoute path="/articles/:id" exact component={Article} />
-        <PrivateRoute path="/market" exact component={Market} />
-        <PrivateRoute
+        <CustomRoute path="/articles/:id" exact component={Article} />
+        <CustomRoute path="/market" exact component={Market} />
+        <CustomRoute
           isPrivate
           path="/market/create"
           exact
           component={CreateBarraca}
         />
-        <PrivateRoute path="/market/:id" exact component={BarracaPage} />
-        <PrivateRoute path="/events" exact component={EventsPage} />
+        <CustomRoute path="/market/:id" exact component={BarracaPage} />
+        <CustomRoute path="/events" exact component={EventsPage} />
       </Switch>
     </BrowserRouter>
   );
