@@ -14,6 +14,7 @@ import CreateArticle from './pages/CreateArticle';
 import CreateRecipe from './pages/CreateRecipe';
 import BarracaPage from './pages/BarracaPage';
 import EventsPage from './pages/EventsPage';
+import Event from './pages/Event';
 import { Context } from './auth/AuthContext';
 
 function CustomRoute({ isPrivate, ...rest }) {
@@ -69,6 +70,7 @@ export default function Routes() {
           component={CreateBarraca}
         />
         <CustomRoute path="/market/:id" exact component={BarracaPage} />
+        <CustomRoute path="/events/:id" exact component={Event} />
         <CustomRoute path="/events" exact component={EventsPage} />
       </Switch>
     </BrowserRouter>

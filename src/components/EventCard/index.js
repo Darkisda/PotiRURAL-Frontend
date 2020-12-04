@@ -15,7 +15,7 @@ export default function EventCard(props) {
         {/* <p>{event.description.substring(0, 160)}...</p> */}
       </Modal.Body>
       <Modal.Footer>
-        <Link to={event.link} className="btn">
+        <Link to={`/events/${event.id}`} className="btn">
           Mais informações
         </Link>
       </Modal.Footer>

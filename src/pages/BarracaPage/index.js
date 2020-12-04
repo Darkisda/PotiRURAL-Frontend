@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Container, Modal } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaWhatsapp, FaImage } from 'react-icons/fa';
-import api from '../../server/api';
 import UserHeader from '../../components/UserHeader';
+import Loading from '../../components/Loading';
+import api from '../../server/api';
 
 import './style.css';
 
@@ -49,9 +50,7 @@ export default function BarracaPage(props) {
                     </tr>
                   ))
                 ) : (
-                  <>
-                    <h1>Loading</h1>
-                  </>
+                  <Loading />
                 )}
               </tbody>
             </table>
@@ -63,9 +62,7 @@ export default function BarracaPage(props) {
           </Modal.Footer>
         </Modal.Dialog>
       ) : (
-        <>
-          <h1>Loading...</h1>
-        </>
+        <Loading />
       )}
     </Container>
   );

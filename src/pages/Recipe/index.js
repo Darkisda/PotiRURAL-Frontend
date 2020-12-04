@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import api from '../../server/api';
 import UserHeader from '../../components/UserHeader';
+import Loading from '../../components/Loading';
 
 import './style.css';
 
@@ -55,9 +56,7 @@ export default function Recipe(props) {
             : ''}
         </>
       ) : (
-        <>
-          <h1>Loading...</h1>
-        </>
+        <Loading />
       )}
     </Container>
   );

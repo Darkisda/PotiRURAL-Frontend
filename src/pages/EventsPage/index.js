@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Pagination, Spinner } from 'react-bootstrap';
+import { Container, Row, Col, Pagination } from 'react-bootstrap';
 import UserHeader from '../../components/UserHeader';
 import EventCard from '../../components/EventCard';
+import Loading from '../../components/Loading';
 import api from '../../server/api';
 
 export default function EventsPage() {
@@ -89,16 +90,7 @@ export default function EventsPage() {
         <h1 className="text-header">Eventos próximos. Confira!</h1>
       </Row>
       <Row className="custom-row">
-        {isLoaded ? (
-          <LoadedEvents />
-        ) : (
-          <Row className="custom-row">
-            <div className="loading">
-              <Spinner animation="border" />
-              <h1>Loading...</h1>
-            </div>
-          </Row>
-        )}
+        {isLoaded ? <LoadedEvents /> : <Loading />}
       </Row>
     </Container>
   );

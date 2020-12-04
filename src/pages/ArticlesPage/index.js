@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Col, Container, Row, Pagination, Spinner } from 'react-bootstrap';
+import { Col, Container, Row, Pagination } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import UserHeader from '../../components/UserHeader';
 import ArticleCard from '../../components/ArticleCard';
+import Loading from '../../components/Loading';
 import api from '../../server/api';
 
 import './style.css';
@@ -97,16 +98,7 @@ export default function ArticlesPage() {
         <Link to="/articles/create">Crie agora um novo artigo.</Link>
       </Row>
       <Row className="custom-row">
-        {isLoaded ? (
-          <LoadedArticles />
-        ) : (
-          <Row className="custom-row">
-            <div className="loading">
-              <Spinner animation="border" />
-              <h1>Loading...</h1>
-            </div>
-          </Row>
-        )}
+        {isLoaded ? <LoadedArticles /> : <Loading />}
       </Row>
     </Container>
   );

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Col, Container, Row, Pagination, Spinner } from 'react-bootstrap';
+import { Col, Container, Row, Pagination } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import api from '../../server/api';
 import UserHeader from '../../components/UserHeader';
 import BarracaCard from '../../components/BarracaCard';
+import Loading from '../../components/Loading';
 
 export default function Market() {
   const [barracas, setBarracas] = useState([]);
@@ -94,16 +95,7 @@ export default function Market() {
         <Link to="/market/create">Crie uma nova barraca agora mesmo!</Link>
       </Row>
       <Row className="custom-row">
-        {isLoaded ? (
-          <LoadedBarracas />
-        ) : (
-          <Row className="custom-row">
-            <div className="loading">
-              <Spinner animation="border" />
-              <h1>Loading...</h1>
-            </div>
-          </Row>
-        )}
+        {isLoaded ? <LoadedBarracas /> : <Loading />}
       </Row>
     </Container>
   );

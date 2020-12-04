@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Pagination, Spinner } from 'react-bootstrap';
+import { Container, Row, Col, Pagination } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import api from '../../server/api';
 import UserHeader from '../../components/UserHeader';
 import RecipeCard from '../../components/RecipeCard';
+import Loading from '../../components/Loading';
 
 import './style.css';
 
@@ -98,16 +99,7 @@ export default function RecipesPage() {
         <Link to="/recipes/create">Escreva agora mesmo uma nova receita!</Link>
       </Row>
       <div className="recipes-content">
-        {isLoaded ? (
-          <LoadedRecipes />
-        ) : (
-          <Row className="custom-row">
-            <div className="loading">
-              <Spinner animation="border" />
-              <h1>Loading...</h1>
-            </div>
-          </Row>
-        )}
+        {isLoaded ? <LoadedRecipes /> : <Loading />}
       </div>
     </Container>
   );
