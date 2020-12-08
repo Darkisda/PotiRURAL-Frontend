@@ -25,7 +25,10 @@ export default function SignIn() {
         history.push('/');
       })
       .catch((error) => {
-        if (error.response.data.statusCode === 401) {
+        if (
+          error.response.data.statusCode === 401 ||
+          error.response.data.statusCode === 404
+        ) {
           setCredentialsErr(error.response.data.message);
         } else {
           setErrs(error.response.data.message);

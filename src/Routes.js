@@ -16,6 +16,7 @@ import BarracaPage from './pages/BarracaPage';
 import EventsPage from './pages/EventsPage';
 import Event from './pages/Event';
 import { Context } from './auth/AuthContext';
+import Perfil from './pages/Perfil';
 
 function CustomRoute({ isPrivate, ...rest }) {
   const { authenticate, loaded } = useContext(Context);
@@ -72,6 +73,7 @@ export default function Routes() {
         <CustomRoute path="/market/:id" exact component={BarracaPage} />
         <CustomRoute path="/events/:id" exact component={Event} />
         <CustomRoute path="/events" exact component={EventsPage} />
+        <CustomRoute isPrivate path="/perfil" component={Perfil} />
       </Switch>
     </BrowserRouter>
   );

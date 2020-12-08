@@ -14,6 +14,16 @@
   justify-content: flex-end;
 }
 
+
+.wrapper-user-header .name {
+  color: #43A047;
+  text-decoration: none;
+}
+
+.wrapper-user-header .name:hover {
+  color: #388E3C;
+}
+
 .wrapper-user-header button {
   background: none;
   border: none;

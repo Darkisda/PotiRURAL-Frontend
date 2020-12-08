@@ -23,7 +23,11 @@ export default function UserHeader() {
         <h2 className="name">
           {authenticate && userLogged.firstName && userLogged.lastName ? (
             <div>
-              {`Olá ${userLogged.firstName} ${userLogged.lastName}`}
+              Olá{' '}
+              <Link
+                to="/perfil"
+                className="name"
+              >{`${userLogged.firstName} ${userLogged.lastName}`}</Link>
               <button type="button" onClick={handleSignOut}>
                 Sair
               </button>
