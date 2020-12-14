@@ -1,13 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import UserHeader from '../../components/UserHeader';
 import Loading from '../../components/Loading';
 import ContributionCard from '../../components/ContributionCard';
+import { Context } from '../../auth/AuthContext';
 import api from '../../server/api';
 
 import './style.css';
 
 export default function Perfil() {
+  const { userLogged } = useContext(Context);
+
   const [isLoaded, setLoaded] = useState(false);
 
   const [recipes, setRecipes] = useState([]);
@@ -15,9 +19,7 @@ export default function Perfil() {
   const [articles, setArticles] = useState([]);
   const [events, setEvents] = useState([]);
 
-  async function fetchContributions() {
-    const response = await api.get('perfil');
-
+  function handleSettingItens(response) {
     if (response.data.recipes !== undefined) {
       setRecipes(response.data.recipes);
     } else {
@@ -43,9 +45,24 @@ export default function Perfil() {
     }
   }
 
+  async function fetchContributions() {
+    api
+      .get('perfil')
+      .then((response) => {
+        if (response.status === 200) {
+          handleSettingItens(response);
+          setLoaded(true);
+        }
+      })
+      .catch((err) => {
+        if (err.response.data.statusCode === 401) {
+          <p>Opps</p>;
+        }
+      });
+  }
+
   useEffect(async () => {
     await fetchContributions();
-    setLoaded(true);
   }, []);
 
   return (
@@ -54,6 +71,15 @@ export default function Perfil() {
       <Row className="custom-row">
         <h1>Seu perfil com suas contribuições!</h1>
       </Row>
+      {userLogged.occupation === 'ADMIN' ? (
+        <Row className="custom-row">
+          <Link to="events/create" className="create-event">
+            <h2>Você Admin, pode criar um evento!</h2>
+          </Link>
+        </Row>
+      ) : (
+        ''
+      )}
       <div className="contributions-container">
         {isLoaded ? (
           <>

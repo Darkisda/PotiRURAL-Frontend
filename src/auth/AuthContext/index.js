@@ -11,6 +11,8 @@ function AuthProvider({ children }) {
   const [loaded, setLoaded] = useState(false);
   const [userLogged, setUserLogged] = useState({});
 
+  const token = localStorage.getItem('accessToken');
+
   function handleLogout() {
     localStorage.removeItem('accessToken');
     api.defaults.headers.Authorization = undefined;
@@ -18,8 +20,6 @@ function AuthProvider({ children }) {
   }
 
   function getUserFromJWT() {
-    const token = localStorage.getItem('accessToken');
-
     if (token) {
       const { user, exp } = jwt(token);
 
@@ -33,18 +33,6 @@ function AuthProvider({ children }) {
       setUserLogged(user);
     }
   }
-
-  useEffect(() => {
-    const token = localStorage.getItem('accessToken');
-
-    if (token) {
-      api.defaults.headers.Authorization = `Bearer ${JSON.parse(token)}`;
-      setAuthenticate(true);
-    }
-
-    setLoaded(true);
-    getUserFromJWT();
-  }, []);
 
   async function handleLogin(email, password) {
     const { data } = await api.post('auth/signin', {
@@ -62,6 +50,16 @@ function AuthProvider({ children }) {
       return data;
     }
   }
+
+  useEffect(() => {
+    if (token) {
+      api.defaults.headers.Authorization = `Bearer ${JSON.parse(token)}`;
+      setAuthenticate(true);
+    }
+
+    setLoaded(true);
+    getUserFromJWT();
+  }, [token]);
 
   return (
     <Context.Provider

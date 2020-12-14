@@ -26,6 +26,15 @@
   border-radius: 8px;
 }
 
+a.create-event {
+  text-decoration: none;
+  color: #43A047;
+}
+
+a.create-event h2 {
+  font-weight: 600;
+}
+
 @media (max-width: 576px) {
   .col-contribution {
     max-height: 32rem;

@@ -17,6 +17,7 @@ import EventsPage from './pages/EventsPage';
 import Event from './pages/Event';
 import { Context } from './auth/AuthContext';
 import Perfil from './pages/Perfil';
+import CreateEvent from './pages/CreateEvent';
 
 function CustomRoute({ isPrivate, ...rest }) {
   const { authenticate, loaded } = useContext(Context);
@@ -35,6 +36,27 @@ function CustomRoute({ isPrivate, ...rest }) {
   if (isPrivate && !authenticate) {
     alert('Você precisa está cadastrado para poder criar algo.');
     return <Redirect to="/signup" />;
+  }
+
+  return <Route {...rest} />;
+}
+
+function AdminRoute({ isAdmin, ...rest }) {
+  const { authenticate, loaded, userLogged } = useContext(Context);
+
+  if (!loaded) {
+    return (
+      <Row className="custom-row">
+        <div className="loading">
+          <Spinner animation="border" />
+          <h1>Loading...</h1>
+        </div>
+      </Row>
+    );
+  }
+
+  if ((isAdmin && !authenticate) || userLogged.occupation !== 'ADMIN') {
+    return <Redirect to="/perfil" />;
   }
 
   return <Route {...rest} />;
@@ -71,9 +93,15 @@ export default function Routes() {
           component={CreateBarraca}
         />
         <CustomRoute path="/market/:id" exact component={BarracaPage} />
-        <CustomRoute path="/events/:id" exact component={Event} />
         <CustomRoute path="/events" exact component={EventsPage} />
-        <CustomRoute isPrivate path="/perfil" component={Perfil} />
+        <AdminRoute
+          isAdmin
+          path="/events/create"
+          exact
+          component={CreateEvent}
+        />
+        <CustomRoute path="/events/:id" exact component={Event} />
+        <CustomRoute isPrivate path="/perfil" exact component={Perfil} />
       </Switch>
     </BrowserRouter>
   );
