@@ -12,7 +12,7 @@ export default function EventCard(props) {
         <Modal.Title>{event.name}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {/* <p>{event.description.substring(0, 160)}...</p> */}
+        <p>{event.description.substring(0, 160)}...</p>
       </Modal.Body>
       <Modal.Footer>
         <Link to={`/events/${event.id}`} className="btn">

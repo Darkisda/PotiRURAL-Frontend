@@ -22,12 +22,29 @@ export default function Event(props) {
   return (
     <Container className="container-custom events">
       <UserHeader />
-      {event ? (
+      {event && event.admin ? (
         <>
           <Row className="custom-row">
             <div className="event-header">
               <h1>{event.name}</h1>
+              <h5>{`Criado por: ${event.admin.firstName} ${event.admin.lastName}`}</h5>
             </div>
+          </Row>
+          <hr />
+          <Row className="custom-row">
+            <p>{event.description}</p>
+          </Row>
+          <Row className="custom-row">
+            <div className="">
+              <h3>Local:</h3>
+              <p>{event.local}</p>
+            </div>
+          </Row>
+          <Row className="custom-row">
+            {event.link ? <a href={event.link}>Link do evento online</a> : ''}
+          </Row>
+          <Row className="custom-row">
+            <h5>Dia: {event.date}</h5>
           </Row>
         </>
       ) : (

@@ -83,7 +83,7 @@ export default function Perfil() {
       <div className="contributions-container">
         {isLoaded ? (
           <>
-            {recipes !== undefined ? (
+            {recipes !== undefined && recipes.length !== 0 ? (
               <Col className="col-contribution">
                 <h2>Receitas</h2>
                 {recipes.map((recipe) => (
@@ -95,7 +95,7 @@ export default function Perfil() {
               ''
             )}
 
-            {barracas !== undefined ? (
+            {barracas !== undefined && barracas.length !== 0 ? (
               <Col className="col-contribution">
                 <h2>Barracas</h2>
                 {barracas.map((barraca) => (
@@ -106,7 +106,7 @@ export default function Perfil() {
               ''
             )}
 
-            {articles !== undefined ? (
+            {articles !== undefined && articles.length !== 0 ? (
               <Col className="col-contribution">
                 <h2>Artigos</h2>
                 {articles.map((article) => (
@@ -117,8 +117,9 @@ export default function Perfil() {
               ''
             )}
 
-            {events !== undefined ? (
+            {events !== undefined && events.length !== 0 ? (
               <Col className="col-contribution">
+                {console.log(events)}
                 <h2>Eventos</h2>
                 {events.map((event) => (
                   <p key={event.id}> {event.name} </p>
