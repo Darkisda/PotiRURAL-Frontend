@@ -1,0 +1,19 @@
+
+.modal-header {
+  padding: 0.5rem 0.8rem;
+}
+
+.modal-header .buttons-group, .del, .update  {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+  justify-content: space-between;
+  height: 100%;
+  color: #43A047;
+}
+
+.del, .update {
+  border: none;
+  background: none;
+}

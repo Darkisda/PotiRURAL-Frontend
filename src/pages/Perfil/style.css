@@ -1,6 +1,6 @@
 .contributions-container {
   margin-top: 2.5rem;
-  overflow-x: scroll;
+  overflow-x: auto;
   overflow-y: hidden;
   width: 100%;
   max-height: 65vh;
@@ -24,6 +24,7 @@
   width: 16rem;
   border: 0.2rem solid #43A047;
   border-radius: 8px;
+  overflow-y: auto;
 }
 
 a.create-event {

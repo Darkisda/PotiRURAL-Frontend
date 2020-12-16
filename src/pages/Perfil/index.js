@@ -6,10 +6,15 @@ import Loading from '../../components/Loading';
 import ContributionCard from '../../components/ContributionCard';
 import { Context } from '../../auth/AuthContext';
 import api from '../../server/api';
+import useFetch from '../../hooks/useFetch';
 
 import './style.css';
 
 export default function Perfil() {
+  const { data } = useFetch('perfil');
+
+  console.log(data);
+
   const { userLogged } = useContext(Context);
 
   const [isLoaded, setLoaded] = useState(false);
@@ -87,9 +92,13 @@ export default function Perfil() {
               <Col className="col-contribution">
                 <h2>Receitas</h2>
                 {recipes.map((recipe) => (
-                  <p key={recipe.id}>{recipe.name}</p>
+                  <ContributionCard
+                    key={recipe.id}
+                    name={recipe.name}
+                    id={recipe.id}
+                    endpoint="recipe"
+                  />
                 ))}
-                <ContributionCard />
               </Col>
             ) : (
               ''
@@ -119,7 +128,6 @@ export default function Perfil() {
 
             {events !== undefined && events.length !== 0 ? (
               <Col className="col-contribution">
-                {console.log(events)}
                 <h2>Eventos</h2>
                 {events.map((event) => (
                   <p key={event.id}> {event.name} </p>
