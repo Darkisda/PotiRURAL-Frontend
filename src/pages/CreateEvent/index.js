@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { Container, Form, Row, Col, Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import UserHeader from '../../components/UserHeader';
 import api from '../../server/api';
 
 import './style.css';
+
+const mySwal = withReactContent(Swal);
 
 export default function CreateEvent() {
   const [name, setName] = useState('');
@@ -16,7 +20,10 @@ export default function CreateEvent() {
   const history = useHistory();
 
   function handleSucess() {
-    alert('Evento cadastrado com sucesso!');
+    mySwal.fire({
+      title: <p>Evento Cadastrado!</p>,
+      icon: 'success',
+    });
     history.push('/perfil');
   }
 
@@ -37,7 +44,10 @@ export default function CreateEvent() {
       if (response.status === 201) {
         handleSucess();
       } else {
-        alert('Oops algo deu errado');
+        mySwal.fire({
+          title: <p>Oops... Parece que algo deu errado!</p>,
+          icon: 'error',
+        });
         history.push('/perfil');
       }
     });

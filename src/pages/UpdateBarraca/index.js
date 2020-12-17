@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Container, Row, Form, Col, Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import Loading from '../../components/Loading';
 import UserHeader from '../../components/UserHeader';
 import api from '../../server/api';
@@ -10,6 +12,8 @@ export default function UpdateBarraca(props) {
   const { match } = props;
 
   const history = useHistory();
+
+  const mySwal = withReactContent(Swal);
 
   const [barracaName, setBarracaName] = useState('');
   const [description, setDescription] = useState('');
@@ -86,7 +90,10 @@ export default function UpdateBarraca(props) {
       })
       .then((response) => {
         if (response.status === 200) {
-          alert('Atualizado com sucesso');
+          mySwal.fire({
+            title: <p>Barraca Atualizada!</p>,
+            icon: 'success',
+          });
           history.push('/perfil');
         }
       });

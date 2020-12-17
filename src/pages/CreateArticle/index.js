@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { Container, Row, Form, Col, Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import UserHeader from '../../components/UserHeader';
 import api from '../../server/api';
 
 import './style.css';
+
+const mySwal = withReactContent(Swal);
 
 export default function CreateArticle() {
   const [title, setTitle] = useState('');
@@ -14,7 +18,10 @@ export default function CreateArticle() {
   const history = useHistory();
 
   function handleSucess() {
-    alert('Artigo cadastrado com sucesso!');
+    mySwal.fire({
+      title: <p>Artigo Cadastrado!</p>,
+      icon: 'success',
+    });
     history.push('/articles');
   }
 
@@ -33,7 +40,10 @@ export default function CreateArticle() {
       if (response.status === 201) {
         handleSucess();
       } else {
-        alert('Oops algo deu errado');
+        mySwal.fire({
+          title: <p>Oops... Parece que algo deu errado!</p>,
+          icon: 'error',
+        });
         history.push('/articles');
       }
     });

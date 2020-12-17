@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { Button, Col, Container, Form } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import api from '../../server/api';
 
 import './style.css';
+
+const mySwal = withReactContent(Swal);
 
 export default function SignUp() {
   const [firstName, setFirstName] = useState('');
@@ -32,7 +36,10 @@ export default function SignUp() {
   ];
 
   function handleSucess() {
-    alert('Cadastro realizado com sucesso!');
+    mySwal.fire({
+      title: <p>Cadastrado com Sucesso!</p>,
+      icon: 'success',
+    });
     history.push('/signin');
   }
 

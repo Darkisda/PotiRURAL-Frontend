@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import { Spinner, Row } from 'react-bootstrap';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import MainWrapper from './pages/MainWrapper';
@@ -23,6 +25,8 @@ import UpdateRecipe from './pages/UpdateRecipe';
 import UpdateBarraca from './pages/UpdateBarraca';
 import UpdateEvent from './pages/UpdateEvent';
 
+const mySwal = withReactContent(Swal);
+
 function CustomRoute({ isPrivate, ...rest }) {
   const { authenticate, loaded } = useContext(Context);
 
@@ -38,8 +42,11 @@ function CustomRoute({ isPrivate, ...rest }) {
   }
 
   if (isPrivate && !authenticate) {
-    alert('Você precisa está cadastrado para poder criar algo.');
-    return <Redirect to="/signup" />;
+    mySwal.fire({
+      title: <p>Você precisa está logado para poder criar algo!</p>,
+      icon: 'info',
+    });
+    return <Redirect to="/signin" />;
   }
 
   return <Route {...rest} />;

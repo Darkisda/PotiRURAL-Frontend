@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import UserHeader from '../../components/UserHeader';
 import api from '../../server/api';
 
 import './style.css';
+
+const mySwal = withReactContent(Swal);
 
 export default function CreateRecipe() {
   const [name, setName] = useState('');
@@ -29,10 +33,16 @@ export default function CreateRecipe() {
     e.preventDefault();
     handleCreate().then((response) => {
       if (response.status === 201) {
-        alert('Receita cadastrada com sucesso!');
+        mySwal.fire({
+          title: <p>Receita Cadastrada!</p>,
+          icon: 'success',
+        });
         history.push('/recipes');
       } else {
-        alert('Algo deu errado...');
+        mySwal.fire({
+          title: <p>Oops... Parece que algo deu errado!</p>,
+          icon: 'error',
+        });
         history.push('/');
       }
     });

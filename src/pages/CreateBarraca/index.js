@@ -3,11 +3,15 @@ import axios from 'axios';
 import { Container, Row, Form, Col, Button } from 'react-bootstrap';
 import { FiCheckCircle } from 'react-icons/fi';
 import { useHistory } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import UserHeader from '../../components/UserHeader';
 import Product from '../../models/Product';
 import api from '../../server/api';
 
 import './style.css';
+
+const mySwal = withReactContent(Swal);
 
 export default function CreateBarraca() {
   const [barracaName, setBarracaName] = useState('');
@@ -101,7 +105,10 @@ export default function CreateBarraca() {
   }
 
   function handleSucess() {
-    alert('Cadastro realizado com sucesso!');
+    mySwal.fire({
+      title: <p>Barraca Cadastrada com Sucesso!</p>,
+      icon: 'success',
+    });
     history.push('/markets');
   }
 
@@ -123,7 +130,10 @@ export default function CreateBarraca() {
         if (response.status === 201) {
           handleSucess();
         } else {
-          alert('Oops algo deu errado');
+          mySwal.fire({
+            title: <p>Oops... Parece que algo deu errado!</p>,
+            icon: 'error',
+          });
           history.push('/');
         }
       });
