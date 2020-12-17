@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Form, Row, Col, Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import Loading from '../../components/Loading';
 import UserHeader from '../../components/UserHeader';
 import api from '../../server/api';
+
+const mySwal = withReactContent(Swal);
 
 export default function UpdateRecipe(props) {
   const { match } = props;
@@ -37,7 +41,10 @@ export default function UpdateRecipe(props) {
       })
       .then((response) => {
         if (response.status === 200) {
-          alert('Atualizado com sucesso');
+          mySwal.fire({
+            title: <p>Receita atualizada!</p>,
+            icon: 'success',
+          });
           history.push('/perfil');
         }
       });
