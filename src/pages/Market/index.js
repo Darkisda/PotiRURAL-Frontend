@@ -92,7 +92,7 @@ export default function Market() {
         </h1>
       </Row>
       <Row className="row-right">
-        <Link to="/market/create">Crie uma nova barraca agora mesmo!</Link>
+        <Link to="/markets/create">Crie uma nova barraca agora mesmo!</Link>
       </Row>
       <Row className="custom-row">
         {isLoaded ? <LoadedBarracas /> : <Loading />}

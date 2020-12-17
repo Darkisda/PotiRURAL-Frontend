@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { /* useState, useEffect, */ useContext } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import UserHeader from '../../components/UserHeader';
 import Loading from '../../components/Loading';
 import ContributionCard from '../../components/ContributionCard';
 import { Context } from '../../auth/AuthContext';
-import api from '../../server/api';
+// import api from '../../server/api';
 import useFetch from '../../hooks/useFetch';
 
 import './style.css';
@@ -13,62 +13,60 @@ import './style.css';
 export default function Perfil() {
   const { data } = useFetch('perfil');
 
-  console.log(data);
-
   const { userLogged } = useContext(Context);
 
-  const [isLoaded, setLoaded] = useState(false);
+  // const [isLoaded, setLoaded] = useState(false);
 
-  const [recipes, setRecipes] = useState([]);
-  const [barracas, setBarracas] = useState([]);
-  const [articles, setArticles] = useState([]);
-  const [events, setEvents] = useState([]);
+  // const [recipes, setRecipes] = useState([]);
+  // const [barracas, setBarracas] = useState([]);
+  // const [articles, setArticles] = useState([]);
+  // const [events, setEvents] = useState([]);
 
-  function handleSettingItens(response) {
-    if (response.data.recipes !== undefined) {
-      setRecipes(response.data.recipes);
-    } else {
-      setRecipes(undefined);
-    }
+  // function handleSettingItens(response) {
+  //   if (response.data.recipes !== undefined) {
+  //     setRecipes(response.data.recipes);
+  //   } else {
+  //     setRecipes(undefined);
+  //   }
 
-    if (response.data.barracas !== undefined) {
-      setBarracas(response.data.barracas);
-    } else {
-      setBarracas(undefined);
-    }
+  //   if (response.data.barracas !== undefined) {
+  //     setBarracas(response.data.barracas);
+  //   } else {
+  //     setBarracas(undefined);
+  //   }
 
-    if (response.data.articles !== undefined) {
-      setArticles(response.data.articles);
-    } else {
-      setArticles(undefined);
-    }
+  //   if (response.data.articles !== undefined) {
+  //     setArticles(response.data.articles);
+  //   } else {
+  //     setArticles(undefined);
+  //   }
 
-    if (response.data.events !== undefined) {
-      setEvents(response.data.events);
-    } else {
-      setEvents(undefined);
-    }
-  }
+  //   if (response.data.events !== undefined) {
+  //     setEvents(response.data.events);
+  //   } else {
+  //     setEvents(undefined);
+  //   }
+  // }
 
-  async function fetchContributions() {
-    api
-      .get('perfil')
-      .then((response) => {
-        if (response.status === 200) {
-          handleSettingItens(response);
-          setLoaded(true);
-        }
-      })
-      .catch((err) => {
-        if (err.response.data.statusCode === 401) {
-          <p>Opps</p>;
-        }
-      });
-  }
+  // async function fetchContributions() {
+  //   api
+  //     .get('perfil')
+  //     .then((response) => {
+  //       if (response.status === 200) {
+  //         handleSettingItens(response);
+  //         setLoaded(true);
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       if (err.response.data.statusCode === 401) {
+  //         <p>Opps</p>;
+  //       }
+  //     });
+  // }
 
-  useEffect(async () => {
-    await fetchContributions();
-  }, []);
+  // useEffect(async () => {
+  //   await fetchContributions();
+  // }, []);
 
   return (
     <Container className="container-custom">
@@ -86,12 +84,12 @@ export default function Perfil() {
         ''
       )}
       <div className="contributions-container">
-        {isLoaded ? (
+        {data ? (
           <>
-            {recipes !== undefined && recipes.length !== 0 ? (
+            {data.recipes !== undefined && data.recipes.length !== 0 ? (
               <Col className="col-contribution">
                 <h2>Receitas</h2>
-                {recipes.map((recipe) => (
+                {data.recipes.map((recipe) => (
                   <ContributionCard
                     key={recipe.id}
                     name={recipe.name}
@@ -104,33 +102,48 @@ export default function Perfil() {
               ''
             )}
 
-            {barracas !== undefined && barracas.length !== 0 ? (
+            {data.barracas !== undefined && data.barracas.length !== 0 ? (
               <Col className="col-contribution">
                 <h2>Barracas</h2>
-                {barracas.map((barraca) => (
-                  <p key={barraca.id}>{barraca.barracaName}</p>
+                {data.barracas.map((barraca) => (
+                  <ContributionCard
+                    key={barraca.id}
+                    name={barraca.barracaName}
+                    id={barraca.id}
+                    endpoint="market"
+                  />
                 ))}
               </Col>
             ) : (
               ''
             )}
 
-            {articles !== undefined && articles.length !== 0 ? (
+            {data.articles !== undefined && data.articles.length !== 0 ? (
               <Col className="col-contribution">
                 <h2>Artigos</h2>
-                {articles.map((article) => (
-                  <p key={article.id}> {article.title} </p>
+                {data.articles.map((article) => (
+                  <ContributionCard
+                    key={article.id}
+                    name={article.title}
+                    id={article.id}
+                    endpoint="article"
+                  />
                 ))}
               </Col>
             ) : (
               ''
             )}
 
-            {events !== undefined && events.length !== 0 ? (
+            {data.events !== undefined && data.events.length !== 0 ? (
               <Col className="col-contribution">
                 <h2>Eventos</h2>
-                {events.map((event) => (
-                  <p key={event.id}> {event.name} </p>
+                {data.events.map((event) => (
+                  <ContributionCard
+                    key={event.id}
+                    name={event.name}
+                    id={event.id}
+                    endpoint="events"
+                  />
                 ))}
               </Col>
             ) : (

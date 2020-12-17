@@ -2,7 +2,7 @@
 import React from 'react';
 import { Modal } from 'react-bootstrap';
 import { FiRefreshCcw, FiXCircle } from 'react-icons/fi';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import api from '../../server/api';
 
 import './style.css';
@@ -11,9 +11,6 @@ export default function ContributionCard(props) {
   const { name, id, endpoint } = props;
 
   const history = useHistory();
-
-  console.log(endpoint);
-  console.log(id);
 
   function handleDelete() {
     if (confirm('Você tem certeza que deseja deletar?')) {
@@ -31,10 +28,10 @@ export default function ContributionCard(props) {
       <Modal.Header>
         <p>{name}</p>
         <div className="buttons-group">
-          <div className="update">
+          <Link to={`/${endpoint}s/${id}/edit`} className="update">
             <FiRefreshCcw size={18} />
             <small>Atualizar</small>
-          </div>
+          </Link>
           <button type="button" className="del" onClick={handleDelete}>
             <FiXCircle size={18} />
             <small>Deletar</small>

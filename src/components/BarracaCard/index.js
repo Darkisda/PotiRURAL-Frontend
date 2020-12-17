@@ -27,7 +27,7 @@ export default function BarracaCard(props) {
       </Modal.Body>
 
       <Modal.Footer className="barraca-footer">
-        <Link to={`/market/${barraca.id}`} className="btn" id="barraca-button">
+        <Link to={`/markets/${barraca.id}`} className="btn" id="barraca-button">
           Ver mais detalhes
         </Link>
       </Modal.Footer>

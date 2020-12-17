@@ -88,8 +88,6 @@ export default function CreateBarraca() {
     }
     const prodct = new Product();
 
-    console.log(price);
-
     prodct.setProductName(productName);
     prodct.setPrice(price);
     prodct.setMeansurement(meansurement);
@@ -104,7 +102,7 @@ export default function CreateBarraca() {
 
   function handleSucess() {
     alert('Cadastro realizado com sucesso!');
-    history.push('/market');
+    history.push('/markets');
   }
 
   async function handleSubmit(e) {
@@ -176,7 +174,6 @@ export default function CreateBarraca() {
             <Form.Label className="custom-label">Nome do produto.</Form.Label>
             <Form.Control
               type="text"
-              required
               value={productName}
               onChange={(e) => {
                 setProductName(e.target.value);
@@ -189,7 +186,6 @@ export default function CreateBarraca() {
               type="number"
               step=".01"
               value={price}
-              required
               onChange={(e) => {
                 setPrice(e.target.value);
               }}
@@ -200,7 +196,6 @@ export default function CreateBarraca() {
             <Form.Control
               defaultValue="DEFAULT"
               as="select"
-              required
               onChange={(e) => {
                 setMeansurement(e.target.value);
               }}

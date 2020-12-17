@@ -18,6 +18,9 @@ import Event from './pages/Event';
 import { Context } from './auth/AuthContext';
 import Perfil from './pages/Perfil';
 import CreateEvent from './pages/CreateEvent';
+import UpdateArticle from './pages/UpdateArticle';
+import UpdateRecipe from './pages/UpdateRecipe';
+import UpdateBarraca from './pages/UpdateBarraca';
 
 function CustomRoute({ isPrivate, ...rest }) {
   const { authenticate, loaded } = useContext(Context);
@@ -77,6 +80,12 @@ export default function Routes() {
           component={CreateRecipe}
         />
         <CustomRoute path="/recipes/:id" exact component={Recipe} />
+        <CustomRoute
+          path="/recipes/:id/edit"
+          isPrivate
+          exact
+          component={UpdateRecipe}
+        />
         <CustomRoute path="/articles" exact component={ArticlesPage} />
         <CustomRoute
           isPrivate
@@ -85,14 +94,26 @@ export default function Routes() {
           component={CreateArticle}
         />
         <CustomRoute path="/articles/:id" exact component={Article} />
-        <CustomRoute path="/market" exact component={Market} />
         <CustomRoute
           isPrivate
-          path="/market/create"
+          path="/articles/:id/edit"
+          exact
+          component={UpdateArticle}
+        />
+        <CustomRoute path="/markets" exact component={Market} />
+        <CustomRoute
+          isPrivate
+          path="/markets/create"
           exact
           component={CreateBarraca}
         />
-        <CustomRoute path="/market/:id" exact component={BarracaPage} />
+        <CustomRoute path="/markets/:id" exact component={BarracaPage} />
+        <CustomRoute
+          path="/markets/:id/edit"
+          isPrivate
+          exact
+          component={UpdateBarraca}
+        />
         <CustomRoute path="/events" exact component={EventsPage} />
         <AdminRoute
           isAdmin
