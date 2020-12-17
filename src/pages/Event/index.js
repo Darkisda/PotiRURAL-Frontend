@@ -10,7 +10,7 @@ export default function Event(props) {
   const { match } = props;
 
   async function fetchEventByID() {
-    const response = await api.get(`events/${match.params.id}`);
+    const response = await api.get(`event/${match.params.id}`);
 
     setEvent(response.data);
   }

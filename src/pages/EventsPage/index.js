@@ -18,7 +18,7 @@ export default function EventsPage() {
       : 1;
 
   async function fetchEvents() {
-    const response = await api.get(`events?page=${page}&limit=9`);
+    const response = await api.get(`event?page=${page}&limit=9`);
 
     setPageInfo({
       totalCount: response.data.totalCount,

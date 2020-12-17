@@ -21,7 +21,7 @@ export default function CreateEvent() {
   }
 
   async function handleCreate() {
-    const response = await api.post('/events', {
+    const response = await api.post('/event', {
       name,
       description,
       link,

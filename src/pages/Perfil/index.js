@@ -142,7 +142,7 @@ export default function Perfil() {
                     key={event.id}
                     name={event.name}
                     id={event.id}
-                    endpoint="events"
+                    endpoint="event"
                   />
                 ))}
               </Col>

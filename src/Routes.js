@@ -21,6 +21,7 @@ import CreateEvent from './pages/CreateEvent';
 import UpdateArticle from './pages/UpdateArticle';
 import UpdateRecipe from './pages/UpdateRecipe';
 import UpdateBarraca from './pages/UpdateBarraca';
+import UpdateEvent from './pages/UpdateEvent';
 
 function CustomRoute({ isPrivate, ...rest }) {
   const { authenticate, loaded } = useContext(Context);
@@ -122,6 +123,12 @@ export default function Routes() {
           component={CreateEvent}
         />
         <CustomRoute path="/events/:id" exact component={Event} />
+        <AdminRoute
+          path="/events/:id/edit"
+          isAdmin
+          exact
+          component={UpdateEvent}
+        />
         <CustomRoute isPrivate path="/perfil" exact component={Perfil} />
       </Switch>
     </BrowserRouter>
