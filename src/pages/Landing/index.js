@@ -103,7 +103,7 @@ export default function Landing() {
               trabalhar juntos!
             </h5>
             <h5 className="subtitle">
-              <Link to="/">E você como produtor pode entrar nessa!</Link>
+              <Link to="/helps">E você como produtor pode entrar nessa!</Link>
             </h5>
           </Col>
           <Col xs={12} lg={6} id="col-right">

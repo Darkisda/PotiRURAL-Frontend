@@ -1,0 +1,45 @@
+.helper-footer {
+  padding: 0;
+}
+
+.buttons-contact {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.button-contact {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 0.5rem 0.5rem;
+  height: 100%;
+  width: 49.5%;
+  border: none;
+  background: none;
+  font-weight: 600;
+  color: #fff;
+}
+
+.email {
+  background-color: #03A9F4;
+  border-bottom-left-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.email:hover {
+  background-color: #0288D1;
+}
+
+.whatsapp {
+  background-color: #4CAF50;
+  border-bottom-right-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.whatsapp:hover {
+  background-color: #388E3C;
+}

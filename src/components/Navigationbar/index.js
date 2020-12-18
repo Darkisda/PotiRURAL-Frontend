@@ -29,7 +29,9 @@ export default function NavigationBar() {
             </Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link href="#">Pergunte ao especialista</Nav.Link>
+            <Link className="nav-link" to="/helps">
+              Pergunte ao especialista
+            </Link>
           </Nav.Item>
         </Nav>
         <Link to="/signin">
