@@ -1,8 +1,8 @@
-.modal-header {
+.custom-modal .modal-header {
   padding: 0.5rem 0.8rem;
 }
 
-.modal-header .buttons-group, .del, .update  {
+.custom-modal .modal-header .buttons-group, .del, .update  {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,7 +12,17 @@
   color: #43A047;
 }
 
+.custom-modal .modal-header a.name {
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: #43A047;
+}
+
 .del, .update {
   border: none;
   background: none;
+}
+
+.custom-modal .modal-header a:hover {
+  color: #388E3C;
 }

@@ -1,13 +1,10 @@
-/* eslint-disable no-restricted-globals */
 import React from 'react';
 import { Modal } from 'react-bootstrap';
-import { FiRefreshCcw, FiXCircle } from 'react-icons/fi';
+import { FiXCircle, FiCheck } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import api from '../../server/api';
-
-import './style.css';
 
 const mySwal = withReactContent(Swal);
 
@@ -18,7 +15,7 @@ mySwal.mixin({
   buttonsStyling: false,
 });
 
-export default function ContributionCard(props) {
+export default function AdminCard(props) {
   const { name, id, endpoint } = props;
 
   function handleDelete() {
@@ -46,6 +43,21 @@ export default function ContributionCard(props) {
       });
   }
 
+  function handleAprrove() {
+    api.put(`dashboard/${endpoint}/${id}`).then((response) => {
+      if (response.status === 200) {
+        mySwal
+          .fire({
+            title: <p>Aprovado!</p>,
+            icon: 'success',
+          })
+          .then(() => {
+            window.location.reload();
+          });
+      }
+    });
+  }
+
   return (
     <Modal.Dialog className="custom-modal">
       <Modal.Header>
@@ -53,10 +65,10 @@ export default function ContributionCard(props) {
           {name}
         </Link>
         <div className="buttons-group">
-          <Link to={`/${endpoint}s/${id}/edit`} className="update">
-            <FiRefreshCcw size={18} />
-            <small>Atualizar</small>
-          </Link>
+          <button type="button" className="update" onClick={handleAprrove}>
+            <FiCheck size={18} />
+            <small>Aprovar</small>
+          </button>
           <button type="button" className="del" onClick={handleDelete}>
             <FiXCircle size={18} />
             <small>Deletar</small>
