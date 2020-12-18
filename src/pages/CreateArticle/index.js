@@ -20,6 +20,7 @@ export default function CreateArticle() {
   function handleSucess() {
     mySwal.fire({
       title: <p>Artigo Cadastrado!</p>,
+      text: 'Aguarde ele ser aprovado por algum admin!',
       icon: 'success',
     });
     history.push('/articles');

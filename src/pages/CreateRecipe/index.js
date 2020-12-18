@@ -35,6 +35,7 @@ export default function CreateRecipe() {
       if (response.status === 201) {
         mySwal.fire({
           title: <p>Receita Cadastrada!</p>,
+          text: 'Aguarde ele ser aprovado por algum admin!',
           icon: 'success',
         });
         history.push('/recipes');

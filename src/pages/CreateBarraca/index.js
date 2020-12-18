@@ -107,6 +107,7 @@ export default function CreateBarraca() {
   function handleSucess() {
     mySwal.fire({
       title: <p>Barraca Cadastrada com Sucesso!</p>,
+      text: 'Aguarde ele ser aprovado por algum admin!',
       icon: 'success',
     });
     history.push('/markets');
