@@ -37,10 +37,10 @@ export default function BarracaPage(props) {
 
             <p className="barraca-description">{barraca.description}</p>
             <hr />
-            <table className="products">
-              <tbody>
-                {barraca.products ? (
-                  barraca.products.map((product) => (
+            {barraca.products ? (
+              <table className="products">
+                <tbody>
+                  {barraca.products.map((product) => (
                     <tr key={product.id} className="products-row">
                       <td className="product-name">{product.productName}</td>
                       <td className="product-price">{product.price}</td>
@@ -48,12 +48,12 @@ export default function BarracaPage(props) {
                         {product.meansurement}
                       </td>
                     </tr>
-                  ))
-                ) : (
-                  <Loading />
-                )}
-              </tbody>
-            </table>
+                  ))}
+                </tbody>
+              </table>
+            ) : (
+              <Loading />
+            )}
           </Modal.Body>
           <Modal.Footer className="barraca-footer">
             <Link to="/" className="btn barraca-button">
