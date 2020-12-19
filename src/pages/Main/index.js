@@ -34,7 +34,9 @@ export default function Main() {
       <Row className="custom-row-main mobile">
         <Col lg={12} xs={12} className="custom-col-main">
           <h3>A procura de ajuda?</h3>
-          <div className="section-main" />
+          <Link to="/helps" className="section-main">
+            <div />
+          </Link>
         </Col>
       </Row>
       <Row className="custom-row-main">
