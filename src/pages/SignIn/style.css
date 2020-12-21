@@ -25,7 +25,6 @@
 .login-form {
   margin-top: 5rem;
   height: 35rem;
-  max-height: max-content;
   width: 25rem;
   max-width: 97%;
   border-radius: 8px;
@@ -79,7 +78,7 @@
 
 @media(max-width: 576px) {
   .container-login {
-    height: 100vh;
+    height: 100%;
     width: 100vw;
     display: block;
     overflow-y: hidden;
