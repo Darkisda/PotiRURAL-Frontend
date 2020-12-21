@@ -25,6 +25,8 @@ import UpdateRecipe from './pages/UpdateRecipe';
 import UpdateBarraca from './pages/UpdateBarraca';
 import UpdateEvent from './pages/UpdateEvent';
 import HelpsPage from './pages/HelpsPage';
+import CreateHelp from './pages/CreateHelp';
+import UpdateHelp from './pages/UpdateHelp';
 
 const mySwal = withReactContent(Swal);
 
@@ -139,6 +141,18 @@ export default function Routes() {
         />
         <CustomRoute isPrivate path="/perfil" exact component={Perfil} />
         <CustomRoute path="/helps" exact component={HelpsPage} />
+        <CustomRoute
+          path="/helps/create"
+          isPrivate
+          exact
+          component={CreateHelp}
+        />
+        <CustomRoute
+          path="/helps/:id/edit"
+          isPrivate
+          exact
+          component={UpdateHelp}
+        />
       </Switch>
     </BrowserRouter>
   );

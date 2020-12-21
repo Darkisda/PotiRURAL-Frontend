@@ -17,7 +17,7 @@
   justify-content: space-around;
   padding: 0.5rem 0.5rem;
   height: 100%;
-  width: 49.5%;
+  width: 100%;
   border: none;
   background: none;
   font-weight: 600;
@@ -25,21 +25,27 @@
 }
 
 .email {
-  background-color: #03A9F4;
+  background-color: #03a9f4;
   border-bottom-left-radius: 8px;
   transition: background-color 0.2s;
 }
 
 .email:hover {
-  background-color: #0288D1;
+  background-color: #0288d1;
 }
 
 .whatsapp {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
   transition: background-color 0.2s;
 }
 
+.whatsapp a {
+  text-decoration: none;
+  color: #fff;
+}
+
 .whatsapp:hover {
-  background-color: #388E3C;
+  background-color: #388e3c;
 }

@@ -95,6 +95,22 @@ export default function Perfil() {
           ) : (
             ''
           )}
+
+          {data.helps !== undefined && data.helps.length !== 0 ? (
+            <Col className="col-contribution">
+              <h2>Ajudas</h2>
+              {data.helps.map((help) => (
+                <ContributionCard
+                  key={help.id}
+                  name={help.content}
+                  id={help.id}
+                  endpoint="help"
+                />
+              ))}
+            </Col>
+          ) : (
+            ''
+          )}
         </div>
       ) : (
         <Loading />

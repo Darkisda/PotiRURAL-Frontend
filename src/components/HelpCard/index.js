@@ -1,6 +1,6 @@
 import React from 'react';
 import { Modal } from 'react-bootstrap';
-import { FiMail, FiPhone } from 'react-icons/fi';
+import { FiPhone } from 'react-icons/fi';
 
 import './style.css';
 
@@ -9,25 +9,23 @@ export default function HelpCard(props) {
 
   console.log(help);
 
+  const msg = 'Olá vi sua oferta de ajuda e vim aqui solicita-la';
+
   return (
     <Modal.Dialog className="recipe-card">
-      <Modal.Header>
-        <Modal.Title>Nome Exemplo</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        Alguma coisa aqui para encher linguiça para poder dar algum exemplo de
-        coisa real que possa acontecer no dia a dia
-      </Modal.Body>
+      <Modal.Body>{help.content}</Modal.Body>
       <Modal.Footer className="helper-footer">
         Entrar em contato
         <div className="buttons-contact">
-          <button type="button" className="button-contact email">
-            <FiMail size={18} color="fff" />
-            Email
-          </button>
           <button type="button" className="button-contact whatsapp">
-            <FiPhone size={18} color="fff" />
-            Whatsapp
+            <a
+              href={`https://api.whatsapp.com/send?phone=${encodeURIComponent(
+                help.user.whatsapp
+              )}&text=${encodeURIComponent(msg)}`}
+            >
+              <FiPhone size={18} color="fff" />
+              Whatsapp
+            </a>
           </button>
         </div>
       </Modal.Footer>
