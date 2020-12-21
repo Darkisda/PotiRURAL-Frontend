@@ -4,7 +4,11 @@ import { FiMail, FiPhone } from 'react-icons/fi';
 
 import './style.css';
 
-export default function HelpCard() {
+export default function HelpCard(props) {
+  const { help } = props;
+
+  console.log(help);
+
   return (
     <Modal.Dialog className="recipe-card">
       <Modal.Header>
